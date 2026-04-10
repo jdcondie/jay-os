@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jay's Master Operating System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<!-- HAMBURGER BUTTON -->
+<button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- MOBILE TOP BAR -->
+<div class="mobile-topbar">
+  <div class="mobile-topbar-title" id="mobile-title">Mission Control</div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- BOTTOM TAB BAR -->
+<div class="bottom-tab-bar" id="bottom-tab-bar">
+  <button class="btab active" id="btab-home" onclick="btabNav('home',this)">
+    <span class="btab-icon">🏠</span>
+    <span class="btab-label">Home</span>
+  </button>
+  <button class="btab" id="btab-moment" onclick="btabNav('unstuck',this)">
+    <span class="btab-icon">🔧</span>
+    <span class="btab-label">Fix It</span>
+  </button>
+  <button class="btab" id="btab-worksheets" onclick="btabNav('nonneg',this)">
+    <span class="btab-icon">✅</span>
+    <span class="btab-label">Check In</span>
+  </button>
+  <button class="btab" id="btab-vision" onclick="btabNav('scenes',this)">
+    <span class="btab-icon">🌄</span>
+    <span class="btab-label">Vision</span>
+  </button>
+  <button class="btab" id="btab-all" onclick="toggleMenu()">
+    <span class="btab-icon">☰</span>
+    <span class="btab-label">All</span>
+  </button>
+</div>
+
+<div class="app">
+
+  <!-- SIDEBAR NAV -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="wordmark">Jay<span>.</span>OS</div>
+      <div class="tagline">Master Operating System — 2026</div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Home</div>
+      <div class="nav-item" data-page="home" onclick="showPage('home')">
+        <div class="nav-dot"></div> Mission Control
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Core</div>
+      <div class="nav-item" data-page="machine" onclick="showPage('machine')">
+        <div class="nav-dot"></div> The Machine
+      </div>
+      <div class="nav-item" data-page="identity" onclick="showPage('identity')">
+        <div class="nav-dot"></div> Identity &amp; Ownership
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">In-the-Moment</div>
+      <div class="nav-item" data-page="unstuck" onclick="showPage('unstuck')">
+        <div class="nav-dot"></div> Unstuck Protocol
+      </div>
+      <div class="nav-item" data-page="fuel" onclick="showPage('fuel')">
+        <div class="nav-dot"></div> Fuel Tank
+      </div>
+      <div class="nav-item" data-page="spiral" onclick="showPage('spiral')">
+        <div class="nav-dot"></div> Spiral Protocol
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Daily</div>
+      <div class="nav-item" data-page="rhythm" onclick="showPage('rhythm')">
+        <div class="nav-dot"></div> Daily Rhythm
+      </div>
+      <div class="nav-item" data-page="deepwork" onclick="showPage('deepwork')">
+        <div class="nav-dot"></div> Deep Work OS
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Decisions</div>
+      <div class="nav-item" data-page="filters" onclick="showPage('filters')">
+        <div class="nav-dot"></div> Decision Filters
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Worksheets</div>
+      <div class="nav-item" data-page="daily-sheet" onclick="showPage('daily-sheet')">
+        <div class="nav-dot"></div> Daily Sheet
+      </div>
+      <div class="nav-item" data-page="weekly" onclick="showPage('weekly')">
+        <div class="nav-dot"></div> Weekly Recalibration
+      </div>
+      <div class="nav-item" data-page="7day" onclick="showPage('7day')">
+        <div class="nav-dot"></div> 7-Day Identity Cycle
+      </div>
+      <div class="nav-item" data-page="annual" onclick="showPage('annual')">
+        <div class="nav-dot"></div> Annual Reflection
+      </div>
+      <div class="nav-item" data-page="rules" onclick="showPage('rules')">
+        <div class="nav-dot"></div> Rules of Thumb
+      </div>
+      <div class="nav-item" data-page="nonneg" onclick="showPage('nonneg')">
+        <div class="nav-dot"></div> Non-Negotiables
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Vision &amp; Identity</div>
+      <div class="nav-item" data-page="scenes" onclick="showPage('scenes')">
+        <div class="nav-dot"></div> Vision Scenes
+      </div>
+      <div class="nav-item" data-page="manifestos" onclick="showPage('manifestos')">
+        <div class="nav-dot"></div> Manifestos &amp; Creeds
+      </div>
+      <div class="nav-item" data-page="manifestation" onclick="showPage('manifestation')">
+        <div class="nav-dot"></div> Manifestation Process
+      </div>
+      <div class="nav-item" data-page="presence" onclick="showPage('presence')">
+        <div class="nav-dot"></div> Presence &amp; Confidence
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Action &amp; Rewiring</div>
+      <div class="nav-item" data-page="irreversible" onclick="showPage('irreversible')">
+        <div class="nav-dot"></div> Make It Irreversible
+      </div>
+      <div class="nav-item" data-page="prompts" onclick="showPage('prompts')">
+        <div class="nav-dot"></div> Journal Prompts
+      </div>
+      <div class="nav-item" data-page="rewiring" onclick="showPage('rewiring')">
+        <div class="nav-dot"></div> Behavior Rewiring
+      </div>
+      <div class="nav-item" data-page="traits" onclick="showPage('traits')">
+        <div class="nav-dot"></div> High Performer Traits
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT — pages injected here -->
+  <main class="main" id="main-content"></main>
+
+</div>
+
+<script src="js/state.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/home.js"></script>
+<script src="js/nonneg.js"></script>
+</body>
+</html>

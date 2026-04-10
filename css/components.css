@@ -1,0 +1,213 @@
+/* ── CARDS ──────────────────────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1.5px solid var(--gray-300);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); border-color: var(--orange); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+
+/* ── KOLBE CARDS ────────────────────────────────────────────────── */
+.kolbe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+.kolbe-card {
+  background: var(--white); border: 1.5px solid var(--gray-300);
+  border-radius: 12px; padding: 20px 22px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.kolbe-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); border-color: var(--orange); }
+.kolbe-score { font-size: 44px; font-weight: 800; color: var(--orange); line-height: 1; letter-spacing: -0.04em; margin-bottom: 4px; }
+.kolbe-name { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+.kolbe-desc { font-size: 13px; color: var(--gray-500); line-height: 1.55; }
+
+/* ── TAGS ───────────────────────────────────────────────────────── */
+.tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 6px; margin: 3px 3px 3px 0; }
+.tag-orange { background: var(--orange-light); color: var(--orange); }
+.tag-red { background: var(--red-bg); color: var(--red); }
+.tag-green { background: var(--green-bg); color: var(--green); }
+.tag-blue { background: var(--blue-bg); color: var(--blue); }
+.tag-gray { background: var(--gray-100); color: var(--gray-700); }
+
+/* ── QUOTE / RULE BLOCKS ────────────────────────────────────────── */
+.quote-block {
+  background: var(--orange-light); border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0;
+  font-size: 14px; color: var(--gray-700); line-height: 1.65;
+}
+.rule-block {
+  background: var(--gray-50); border: 1.5px solid var(--gray-300);
+  border-left: 3px solid var(--orange); border-radius: 0 8px 8px 0;
+  padding: 13px 16px; margin: 8px 0; font-size: 14px; color: var(--gray-700);
+}
+.rule-block strong { color: var(--orange); }
+.rule {
+  background: var(--gray-50); border: 1.5px solid var(--gray-300);
+  border-left: 3px solid var(--orange); border-radius: 0 8px 8px 0;
+  padding: 13px 16px; margin: 8px 0; font-size: 14px; color: var(--gray-700);
+}
+.rule strong { color: var(--orange); }
+
+.orange-break {
+  background: var(--orange); border-radius: 12px;
+  padding: 28px 32px; margin: 28px 0; text-align: center;
+}
+.orange-break h3 {
+  font-size: 17px; font-weight: 800; color: white;
+  text-transform: none; letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.orange-break p { font-size: 14px; color: rgba(255,255,255,0.85); max-width: 480px; margin: 0 auto; line-height: 1.65; }
+
+/* ── STEP LIST ──────────────────────────────────────────────────── */
+.step-list { list-style: none; }
+.step-item { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+.step-num {
+  font-size: 11px; font-weight: 700; color: var(--orange);
+  background: var(--orange-light); border-radius: 5px;
+  padding: 2px 8px; flex-shrink: 0; margin-top: 2px; letter-spacing: 0.04em;
+}
+.step-text { font-size: 14px; color: var(--gray-700); line-height: 1.6; }
+.step-text strong { color: var(--black); }
+
+/* ── FILTER STACK ───────────────────────────────────────────────── */
+.filter-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px; border-bottom: 1px solid var(--gray-100);
+  font-size: 14px; color: var(--gray-700);
+}
+.filter-num {
+  font-size: 11px; font-weight: 700; color: var(--orange);
+  background: var(--orange-light); border-radius: 5px;
+  padding: 2px 8px; flex-shrink: 0; margin-top: 2px;
+}
+.filter-text { flex: 1; line-height: 1.6; }
+.filter-text strong { color: var(--black); }
+
+/* ── DATA TABLE ─────────────────────────────────────────────────── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.data-table th { background: var(--gray-50); text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-500); border-bottom: 1.5px solid var(--gray-300); }
+.data-table td { padding: 10px 14px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
+.data-table tr:hover td { background: var(--gray-50); }
+
+/* ── CHECKLIST ──────────────────────────────────────────────────── */
+.check-list { list-style: none; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--gray-100);
+}
+.check-item:last-child { border-bottom: none; }
+.check-item input[type="checkbox"] { accent-color: var(--orange); margin-top: 3px; flex-shrink: 0; width: 15px; height: 15px; cursor: pointer; }
+.check-item label { font-size: 14px; color: var(--gray-700); cursor: pointer; line-height: 1.5; }
+.check-item.checked label { text-decoration: line-through; color: var(--gray-300); }
+
+/* ── WORKSHEET FIELDS ───────────────────────────────────────────── */
+.ws-field { margin-bottom: 16px; }
+.ws-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-500); margin-bottom: 6px; }
+.ws-input {
+  width: 100%; background: var(--gray-50);
+  border: 1.5px solid var(--gray-300); border-radius: 8px;
+  padding: 10px 14px; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; color: var(--black); outline: none;
+  resize: vertical; min-height: 44px;
+  transition: border-color 0.15s;
+}
+.ws-input:focus { border-color: var(--orange); }
+input::placeholder, textarea::placeholder { color: #a0a0a0; }
+
+/* ── UNSTUCK GRID ───────────────────────────────────────────────── */
+.unstuck-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin: 0 0 28px;
+}
+.unstuck-btn {
+  border: 1.5px solid var(--gray-300); border-radius: 10px;
+  padding: 16px 14px; cursor: pointer; background: var(--white);
+  text-align: center; transition: all 0.15s; font-family: inherit;
+}
+.unstuck-btn:hover, .unstuck-btn.selected {
+  border-color: var(--orange); background: var(--orange-light);
+}
+.btn-letter {
+  font-size: 22px; font-weight: 800; color: var(--orange);
+  margin-bottom: 6px; letter-spacing: -0.02em;
+}
+.btn-label { font-size: 12px; font-weight: 600; color: var(--gray-700); line-height: 1.4; }
+
+/* ── PROTOCOL BOX ───────────────────────────────────────────────── */
+.protocol-box { display: none; background: var(--gray-50); border: 1.5px solid var(--gray-300); border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; }
+.protocol-box.visible { display: block; animation: fadeUp 0.18s ease; }
+.proto-title { font-size: 18px; font-weight: 800; color: var(--black); letter-spacing: -0.02em; margin-bottom: 6px; }
+.proto-why { font-size: 14px; color: var(--gray-500); margin-bottom: 20px; line-height: 1.6; }
+
+/* ── MANTRA BLOCK ───────────────────────────────────────────────── */
+.mantra-block {
+  background: var(--gray-50); border: 1.5px solid var(--gray-300);
+  border-radius: 12px; padding: 28px 32px;
+  font-size: 15px; color: var(--gray-700); line-height: 2.1;
+}
+
+/* ── TAB ROW ────────────────────────────────────────────────────── */
+.tab-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+.tab-pill {
+  background: var(--gray-50); border: 1px solid var(--gray-300);
+  border-radius: 100px; padding: 6px 14px;
+  font-size: 12px; font-weight: 600; color: var(--gray-500);
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.tab-pill:hover { border-color: var(--orange); color: var(--orange); }
+.tab-pill.active { background: var(--orange); border-color: var(--orange); color: white; }
+.tab-content { display: none; }
+.tab-content.visible { display: block; animation: fadeUp 0.18s ease; }
+
+/* ── DAY TAB ────────────────────────────────────────────────────── */
+.day-tab {
+  background: var(--gray-50); border: 1px solid var(--gray-300);
+  border-radius: 6px; padding: 7px 14px;
+  color: var(--gray-500); cursor: pointer;
+  font-size: 12px; font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all 0.15s;
+}
+.day-tab:hover, .day-tab.active {
+  border-color: var(--orange); color: var(--orange); background: var(--orange-light);
+}
+.day-content { display: none; }
+.day-content.visible { display: block; animation: fadeUp 0.18s ease; }
+
+/* ── SCENE CONTENT ──────────────────────────────────────────────── */
+.scene-content { display: none; }
+.scene-content.visible { display: block; animation: fadeUp 0.18s ease; }
+
+/* ── MANIFESTO CONTENT ──────────────────────────────────────────── */
+.manifesto-content { display: none; }
+.manifesto-content.visible { display: block; animation: fadeUp 0.18s ease; }
+
+/* ── COACH CARDS ────────────────────────────────────────────────── */
+.coach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.coach-card { background: var(--white); border: 1.5px solid var(--gray-300); border-radius: 12px; padding: 20px 22px; }
+.red-card { border-color: var(--red); }
+.green-card { border-color: var(--green); }
+
+/* ── CARD ICONS ─────────────────────────────────────────────────── */
+.card-icon { font-size: 26px; margin-bottom: 8px; }
+.icon-orange { color: var(--orange); }
+.icon-green { color: var(--green); }
+.icon-blue { color: var(--blue); }
+.card-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+.card-title-sm { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+
+/* ── HR DIVIDER ─────────────────────────────────────────────────── */
+hr.divider { border: none; border-top: 1px solid var(--gray-200); margin: 20px 0; }
+
+/* ── SCORE GRID ─────────────────────────────────────────────────── */
+.score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.score-field.highlight { background: var(--orange-light); border-color: var(--orange); }
+
+/* ── ANIMATION ──────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

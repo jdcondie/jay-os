@@ -1,0 +1,86 @@
+/* ── CAROUSEL ───────────────────────────────────────────────────── */
+.carousel-wrap { margin: 0 -8px; overflow: hidden; margin-bottom: 36px; }
+.carousel {
+  display: flex; gap: 10px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 8px 8px 12px;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.carousel-card {
+  flex: 0 0 200px; scroll-snap-align: start;
+  background: var(--white); border: 1.5px solid var(--gray-300);
+  border-radius: 12px; padding: 18px 18px 14px;
+  cursor: pointer; transition: all 0.15s;
+}
+.carousel-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+.cc-icon { font-size: 22px; margin-bottom: 8px; }
+.cc-title { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+.cc-sub { font-size: 11px; color: var(--gray-500); line-height: 1.5; margin-bottom: 6px; }
+.cc-action { font-size: 11px; font-weight: 700; color: var(--orange); margin-top: 8px; }
+
+/* ── OS SECTION GRID ────────────────────────────────────────────── */
+.os-section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ── OS TILES ───────────────────────────────────────────────────── */
+.os-tile {
+  position: relative; border-radius: 14px;
+  min-height: 90px; padding: 16px 18px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  cursor: pointer; overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.os-tile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.os-tile.wide { grid-column: span 2; }
+
+.os-tile-label { font-size: 13px; font-weight: 800; color: white; margin-top: 4px; line-height: 1.2; }
+.os-tile-sub { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 3px; line-height: 1.4; }
+.os-tile-icon { font-size: 26px; position: absolute; bottom: 12px; right: 14px; opacity: 0.6; }
+.os-tile-badge {
+  display: inline-block; background: rgba(255,255,255,0.2);
+  color: white; font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 100px; margin-bottom: 4px;
+}
+
+/* ── TILE COLOR VARIANTS ────────────────────────────────────────── */
+.tile-orange  { background: linear-gradient(135deg, #E8541A, #f97440); }
+.tile-red     { background: linear-gradient(135deg, #dc2626, #ef4444); }
+.tile-amber   { background: linear-gradient(135deg, #b45309, #d97706); }
+.tile-blue    { background: linear-gradient(135deg, #1d4ed8, #3b82f6); }
+.tile-teal    { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+.tile-purple  { background: linear-gradient(135deg, #6d28d9, #8b5cf6); }
+.tile-green   { background: linear-gradient(135deg, #15803d, #22c55e); }
+.tile-slate   { background: linear-gradient(135deg, #334155, #64748b); }
+.tile-yellow  { background: linear-gradient(135deg, #92400e, #ca8a04); }
+
+/* ── HOME DAY BUTTONS ───────────────────────────────────────────── */
+.home-day-btn {
+  border: 1.5px solid var(--gray-300); border-radius: 10px;
+  padding: 12px 10px; background: var(--white);
+  cursor: pointer; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  font-family: inherit; transition: all 0.15s;
+}
+.home-day-btn:hover, .home-day-btn.selected {
+  border-color: var(--orange); background: var(--orange-light);
+}
+.home-day-label { font-size: 11px; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.04em; }
+.home-day-q { font-size: 10px; color: var(--gray-500); line-height: 1.4; }
+
+/* ── HOME OS CARD ───────────────────────────────────────────────── */
+.home-os-card {
+  background: var(--white); border: 1.5px solid var(--gray-300);
+  border-radius: 10px; padding: 14px 16px; cursor: pointer;
+  transition: all 0.15s;
+}
+.home-os-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(0,0,0,0.07); transform: translateY(-1px); }
+.home-os-title { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 2px; }
+.home-os-sub { font-size: 11px; color: var(--gray-500); }
+
+/* ── MOBILE OVERRIDES ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .carousel-card { flex: 0 0 160px; }
+  .os-section-grid { grid-template-columns: 1fr; }
+  .os-tile.wide { grid-column: span 1; }
+}

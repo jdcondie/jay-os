@@ -1,0 +1,92 @@
+/* ── HAMBURGER ──────────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed; top: 12px; left: 12px;
+  width: 42px; height: 42px; z-index: 300;
+  background: var(--white); border: 1.5px solid var(--gray-300);
+  border-radius: 10px; cursor: pointer;
+  flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  transition: all 0.15s;
+}
+.hamburger:hover { border-color: var(--orange); }
+.hamburger span {
+  display: block; width: 18px; height: 2px;
+  background: var(--black); border-radius: 2px;
+  transition: all 0.2s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── OVERLAY ────────────────────────────────────────────────────── */
+.overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+  z-index: 150;
+}
+.overlay.visible { display: block; }
+
+/* ── MOBILE TOP BAR ─────────────────────────────────────────────── */
+.mobile-topbar {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 56px; z-index: 200;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-300);
+  align-items: center; justify-content: center;
+}
+.mobile-topbar-title { font-size: 13px; font-weight: 700; color: var(--black); }
+
+/* ── BOTTOM TAB BAR ─────────────────────────────────────────────── */
+.bottom-tab-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--gray-300);
+  z-index: 200;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+.btab {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 8px 4px; background: none; border: none;
+  cursor: pointer; font-family: inherit;
+  transition: all 0.15s;
+}
+.btab-icon { font-size: 20px; margin-bottom: 2px; }
+.btab-label { font-size: 10px; font-weight: 600; color: var(--gray-500); }
+.btab.active .btab-label { color: var(--orange); }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hamburger { display: flex; }
+  .mobile-topbar { display: flex; }
+  .bottom-tab-bar { display: flex; }
+
+  body { overflow-x: hidden; }
+  .main { overflow-x: hidden; word-break: break-word; }
+
+  .sidebar {
+    display: none;
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: 280px; z-index: 200;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+    padding-bottom: 80px;
+  }
+  .sidebar.open { display: flex; flex-direction: column; }
+
+  .main { margin-left: 0; }
+  .page { padding: 72px 16px 90px; }
+
+  .grid-2, .grid-3, .card-grid-2,
+  .kolbe-grid, .coach-grid, .score-grid,
+  .os-section-grid { grid-template-columns: 1fr !important; }
+
+  .unstuck-grid { grid-template-columns: 1fr 1fr; }
+
+  .home-day-grid { grid-template-columns: 1fr 1fr !important; }
+}

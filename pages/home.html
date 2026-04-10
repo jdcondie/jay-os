@@ -1,0 +1,223 @@
+<div class="page active" id="page-home" style="padding:52px 56px 88px;">
+
+  <!-- TOP STATUS BAR -->
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--gray-300);">
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:4px;" id="home-date"></div>
+      <div style="font-size:28px;font-weight:800;letter-spacing:-0.025em;color:var(--black);line-height:1.1;">Mission Control.</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div id="home-streak" style="font-size:13px;font-weight:700;color:var(--orange);background:var(--orange-light);padding:6px 14px;border-radius:100px;">0 day streak</div>
+      <div id="home-nonneg-pct" style="font-size:13px;font-weight:700;color:var(--gray-500);background:var(--gray-100);padding:6px 14px;border-radius:100px;">0% today</div>
+    </div>
+  </div>
+
+  <!-- DAY TYPE SELECTOR -->
+  <div style="margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:12px;">What kind of day is this?</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;" id="home-day-grid">
+      <button onclick="setDayType('Sales',this)"        class="home-day-btn"><div class="home-day-label">Sales</div><div class="home-day-q">What conversation advances money?</div></button>
+      <button onclick="setDayType('Creation',this)"     class="home-day-btn"><div class="home-day-label">Creation</div><div class="home-day-q">What asset exists tonight?</div></button>
+      <button onclick="setDayType('Strategy',this)"     class="home-day-btn"><div class="home-day-label">Strategy</div><div class="home-day-q">What removes future decisions?</div></button>
+      <button onclick="setDayType('Ops',this)"          class="home-day-btn"><div class="home-day-label">Ops</div><div class="home-day-q">What breaks if untouched?</div></button>
+      <button onclick="setDayType('Recovery',this)"     class="home-day-btn"><div class="home-day-label">Recovery</div><div class="home-day-q">What restores tomorrow?</div></button>
+      <button onclick="setDayType('Relationship',this)" class="home-day-btn"><div class="home-day-label">Relationship</div><div class="home-day-q">Who am I under-investing in?</div></button>
+    </div>
+  </div>
+
+  <!-- INTENTION + START HERE -->
+  <div style="display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-bottom:32px;">
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">Today's One Thing</div>
+      <input id="home-intention" type="text" placeholder="The single move that makes today a win..."
+        onchange="saveIntention(this.value)" oninput="saveIntention(this.value)"
+        style="width:100%;background:var(--gray-50);border:1.5px solid var(--gray-300);border-radius:10px;padding:12px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:var(--black);outline:none;transition:border-color 0.15s;"
+        onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--gray-300)'">
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">Start Here</div>
+      <button id="home-start-btn" onclick="showPage('unstuck')"
+        style="background:var(--orange);color:white;border:none;border-radius:10px;padding:13px 22px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 0.15s;letter-spacing:-0.01em;"
+        onmouseover="this.style.background='var(--orange-mid)'" onmouseout="this.style.background='var(--orange)'">
+        Unstuck Protocol →
+      </button>
+    </div>
+  </div>
+
+  <!-- QUICK ACCESS -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:12px;">Daily Access</div>
+  <div class="carousel-wrap">
+    <div class="carousel">
+      <div class="carousel-card" onclick="showPage('nonneg')">
+        <div class="cc-icon">✅</div>
+        <div class="cc-title">Non-Negotiables</div>
+        <div class="cc-sub">30 conditions ranked by impact</div>
+        <div style="height:4px;background:var(--gray-100);border-radius:100px;overflow:hidden;margin-top:10px;"><div id="home-nn-bar" style="height:100%;background:var(--orange);border-radius:100px;width:0%;transition:width 0.3s;"></div></div>
+        <div class="cc-action" id="home-nn-txt">0 / 30</div>
+      </div>
+      <div class="carousel-card" onclick="showPage('unstuck')">
+        <div class="cc-icon">🔧</div>
+        <div class="cc-title">Unstuck Protocol</div>
+        <div class="cc-sub">Diagnose + fix in real time</div>
+        <div class="cc-action">7 entry points →</div>
+      </div>
+      <div class="carousel-card" onclick="showPage('fuel')">
+        <div class="cc-icon">⚡</div>
+        <div class="cc-title">Fuel Tank</div>
+        <div class="cc-sub">Flat, scattered, depleted</div>
+        <div class="cc-action">S.T.O.P. reset →</div>
+      </div>
+      <div class="carousel-card" onclick="showPage('spiral')">
+        <div class="cc-icon">🌀</div>
+        <div class="cc-title">Spiral Protocol</div>
+        <div class="cc-sub">Coach A → Coach B switch</div>
+        <div class="cc-action">Break the loop →</div>
+      </div>
+      <div class="carousel-card" onclick="showPage('daily-sheet')">
+        <div class="cc-icon">📋</div>
+        <div class="cc-title">Daily Sheet</div>
+        <div class="cc-sub">Fill before opening anything else</div>
+        <div class="cc-action">Open →</div>
+      </div>
+      <div class="carousel-card" onclick="showPage('rhythm')">
+        <div class="cc-icon">🌅</div>
+        <div class="cc-title">Daily Rhythm</div>
+        <div class="cc-sub">Morning calibration + environment</div>
+        <div class="cc-action">Start here →</div>
+      </div>
+      <div class="carousel-card" onclick="showPage('deepwork')">
+        <div class="cc-icon">🎯</div>
+        <div class="cc-title">Deep Work OS</div>
+        <div class="cc-sub">Session sheet for focus blocks</div>
+        <div class="cc-action">Run the session →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL OS GRID -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:16px;">Full Operating System</div>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">Core Wiring</div>
+  <div class="os-section-grid" style="margin-bottom:16px;">
+    <div class="os-tile tile-orange" onclick="showPage('machine')">
+      <div><div class="os-tile-badge">FOUNDATION</div><div class="os-tile-label">The Machine</div><div class="os-tile-sub">6554 loop, TPN/DMN, fuel tank</div></div>
+      <div class="os-tile-icon">⚙️</div>
+    </div>
+    <div class="os-tile tile-amber" onclick="showPage('identity')">
+      <div><div class="os-tile-badge">FOUNDATION</div><div class="os-tile-label">Identity &amp; Ownership</div><div class="os-tile-sub">Ownership test, anchors, mantra</div></div>
+      <div class="os-tile-icon">🎯</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">In-the-Moment</div>
+  <div class="os-section-grid" style="margin-bottom:16px;">
+    <div class="os-tile tile-red wide" onclick="showPage('unstuck')" style="grid-column:span 2;min-height:70px;">
+      <div><div class="os-tile-badge">USE NOW</div><div class="os-tile-label">Unstuck Protocol</div><div class="os-tile-sub">7 diagnostic entry points — diagnose first, act second</div></div>
+      <div class="os-tile-icon">🔧</div>
+    </div>
+    <div class="os-tile tile-slate" onclick="showPage('fuel')">
+      <div><div class="os-tile-label">Fuel Tank</div><div class="os-tile-sub">S.T.O.P. reset</div></div>
+      <div class="os-tile-icon">⚡</div>
+    </div>
+    <div class="os-tile tile-slate" onclick="showPage('spiral')">
+      <div><div class="os-tile-label">Spiral Protocol</div><div class="os-tile-sub">Coach B switch</div></div>
+      <div class="os-tile-icon">🌀</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">Daily</div>
+  <div class="os-section-grid" style="margin-bottom:16px;">
+    <div class="os-tile tile-blue" onclick="showPage('rhythm')">
+      <div><div class="os-tile-badge">DAILY</div><div class="os-tile-label">Daily Rhythm</div><div class="os-tile-sub">Morning + environment</div></div>
+      <div class="os-tile-icon">🌅</div>
+    </div>
+    <div class="os-tile tile-teal" onclick="showPage('deepwork')">
+      <div><div class="os-tile-badge">DAILY</div><div class="os-tile-label">Deep Work OS</div><div class="os-tile-sub">Focus block session</div></div>
+      <div class="os-tile-icon">🎯</div>
+    </div>
+    <div class="os-tile tile-blue wide" onclick="showPage('filters')" style="grid-column:span 2;min-height:70px;">
+      <div><div class="os-tile-label">Decision Filters</div><div class="os-tile-sub">Daily reset · opportunity eval · emergency stuck</div></div>
+      <div class="os-tile-icon">⚖️</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">Worksheets</div>
+  <div class="os-section-grid" style="margin-bottom:16px;">
+    <div class="os-tile tile-green" onclick="showPage('daily-sheet')">
+      <div><div class="os-tile-label">Daily Sheet</div><div class="os-tile-sub">AM + PM fill-in</div></div>
+      <div class="os-tile-icon">📋</div>
+    </div>
+    <div class="os-tile tile-green" onclick="showPage('weekly')">
+      <div><div class="os-tile-label">Weekly Recal.</div><div class="os-tile-sub">7-day sweep</div></div>
+      <div class="os-tile-icon">🔄</div>
+    </div>
+    <div class="os-tile tile-green" onclick="showPage('7day')">
+      <div><div class="os-tile-label">7-Day Identity</div><div class="os-tile-sub">Daily installation</div></div>
+      <div class="os-tile-icon">📅</div>
+    </div>
+    <div class="os-tile tile-green" onclick="showPage('annual')">
+      <div><div class="os-tile-label">Annual Review</div><div class="os-tile-sub">Scorecard + ahead</div></div>
+      <div class="os-tile-icon">📊</div>
+    </div>
+    <div class="os-tile tile-green" onclick="showPage('rules')">
+      <div><div class="os-tile-label">Rules of Thumb</div><div class="os-tile-sub">12 principles</div></div>
+      <div class="os-tile-icon">📌</div>
+    </div>
+    <div class="os-tile tile-orange" onclick="showPage('nonneg')">
+      <div><div class="os-tile-badge">TOP 5</div><div class="os-tile-label">Non-Negotiables</div><div class="os-tile-sub">30 ranked + top 5</div></div>
+      <div class="os-tile-icon">✅</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">Vision &amp; Identity</div>
+  <div class="os-section-grid" style="margin-bottom:16px;">
+    <div class="os-tile tile-purple" onclick="showPage('scenes')">
+      <div><div class="os-tile-label">Vision Scenes</div><div class="os-tile-sub">9 sensory scripts</div></div>
+      <div class="os-tile-icon">🌄</div>
+    </div>
+    <div class="os-tile tile-purple" onclick="showPage('manifestos')">
+      <div><div class="os-tile-label">Manifestos</div><div class="os-tile-sub">I Am the Storm</div></div>
+      <div class="os-tile-icon">⚡</div>
+    </div>
+    <div class="os-tile tile-purple" onclick="showPage('manifestation')">
+      <div><div class="os-tile-label">Manifestation</div><div class="os-tile-sub">Decide → Embody</div></div>
+      <div class="os-tile-icon">🔮</div>
+    </div>
+    <div class="os-tile tile-purple" onclick="showPage('presence')">
+      <div><div class="os-tile-label">Presence</div><div class="os-tile-sub">Show up fully</div></div>
+      <div class="os-tile-icon">🧘</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">Action &amp; Rewiring</div>
+  <div class="os-section-grid" style="margin-bottom:32px;">
+    <div class="os-tile tile-red" onclick="showPage('irreversible')">
+      <div><div class="os-tile-label">Make It Irreversible</div><div class="os-tile-sub">The card + 5-day</div></div>
+      <div class="os-tile-icon">🔒</div>
+    </div>
+    <div class="os-tile tile-slate" onclick="showPage('prompts')">
+      <div><div class="os-tile-label">Journal Prompts</div><div class="os-tile-sub">12 clarity questions</div></div>
+      <div class="os-tile-icon">✍️</div>
+    </div>
+    <div class="os-tile tile-slate" onclick="showPage('rewiring')">
+      <div><div class="os-tile-label">Behavior Rewiring</div><div class="os-tile-sub">14-day installation</div></div>
+      <div class="os-tile-icon">🧠</div>
+    </div>
+    <div class="os-tile tile-red" onclick="showPage('traits')">
+      <div><div class="os-tile-label">High Performer</div><div class="os-tile-sub">8 traits + framework</div></div>
+      <div class="os-tile-icon">🏆</div>
+    </div>
+  </div>
+
+  <!-- ANCHOR QUESTIONS -->
+  <div style="background:var(--gray-50);border:1.5px solid var(--gray-300);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:20px 24px;">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:10px;">When Lost, Return Here</div>
+    <div style="font-size:15px;font-weight:700;color:var(--black);line-height:1.8;">
+      Does this expand my life or shrink it?<br>
+      Am I acting from faith or from fear?<br>
+      Which path makes commitment inevitable?
+    </div>
+    <div style="font-size:13px;color:var(--gray-500);margin-top:10px;font-style:italic;">Failure is impossible. Magic is expected. Positive outcomes are inevitable.</div>
+  </div>
+
+</div>

@@ -1,0 +1,72 @@
+<div class="page" id="page-nonneg" style="padding:52px 56px 88px;">
+  <div class="page-eyebrow">Priority Architecture</div>
+  <div class="page-title">Non-Negotiables</div>
+  <div class="page-subtitle">The conditions that make everything else work — ranked by impact. Get these right first.</div>
+
+  <!-- IF YOU ONLY DO 5 THINGS -->
+  <div style="background:var(--orange);border-radius:16px;padding:32px 36px;margin-bottom:40px;">
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:10px;">Start Here</div>
+    <div style="font-size:22px;font-weight:800;color:white;letter-spacing:-0.025em;line-height:1.2;margin-bottom:6px;">If you only do 5 things, do these.</div>
+    <div style="font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:28px;line-height:1.6;">Everything else improves when these are locked in. These are the load-bearing walls.</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:800;color:white;flex-shrink:0;letter-spacing:0.04em;">#1</div>
+        <div><div style="font-size:15px;font-weight:700;color:white;margin-bottom:2px;">Move your body before you open your phone</div><div style="font-size:13px;color:rgba(255,255,255,0.75);">Fills the fuel tank before you start burning it. Every other protocol works better when this is done first.</div></div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:800;color:white;flex-shrink:0;letter-spacing:0.04em;">#2</div>
+        <div><div style="font-size:15px;font-weight:700;color:white;margin-bottom:2px;">Own your income source — structure beats willpower</div><div style="font-size:13px;color:rgba(255,255,255,0.75);">You can't build a system for your wiring if someone else owns your schedule. This is the structural fix everything else depends on.</div></div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:800;color:white;flex-shrink:0;letter-spacing:0.04em;">#3</div>
+        <div><div style="font-size:15px;font-weight:700;color:white;margin-bottom:2px;">Protect first 2 hours for deep creative work</div><div style="font-size:13px;color:rgba(255,255,255,0.75);">Best brain, fullest tank. Don't spend it on email or admin. This is the slot where your actual leverage lives.</div></div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:800;color:white;flex-shrink:0;letter-spacing:0.04em;">#4</div>
+        <div><div style="font-size:15px;font-weight:700;color:white;margin-bottom:2px;">Zero chronic energy drains in the inner circle</div><div style="font-size:13px;color:rgba(255,255,255,0.75);">One toxic person lowers your entire operating level. Your nervous system is highly responsive to emotional tone. Guard the inputs.</div></div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:800;color:white;flex-shrink:0;letter-spacing:0.04em;">#5</div>
+        <div><div style="font-size:15px;font-weight:700;color:white;margin-bottom:2px;">Create something every day — even small</div><div style="font-size:13px;color:rgba(255,255,255,0.75);">Creation produces dopamine, the gatekeeper for your TPN. This is the fastest tank refill available to you. Don't go a day without it.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div style="background:var(--gray-50);border:1.5px solid var(--gray-300);border-radius:12px;padding:18px 22px;margin-bottom:32px;display:flex;align-items:center;gap:16px;">
+    <div style="font-size:13px;font-weight:700;color:var(--black);white-space:nowrap;" id="nn-label">0 / 30</div>
+    <div style="flex:1;height:8px;background:var(--gray-100);border-radius:100px;overflow:hidden;">
+      <div id="nn-fill" style="height:100%;background:var(--orange);border-radius:100px;width:0%;transition:width 0.4s ease;"></div>
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--orange);white-space:nowrap;" id="nn-pct">0%</div>
+    <button onclick="nnReset()" style="font-size:11px;font-weight:700;color:var(--gray-500);background:none;border:1.5px solid var(--gray-300);border-radius:6px;padding:5px 10px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--gray-300)';this.style.color='var(--gray-500)'">Reset Day</button>
+  </div>
+
+  <!-- FILTER ROW -->
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;">
+    <button onclick="nnFilter('all',this)" class="tab-pill active" id="nn-f-all">All (30)</button>
+    <button onclick="nnFilter('wiring',this)" class="tab-pill" id="nn-f-wiring">6554 Wiring</button>
+    <button onclick="nnFilter('fuel',this)" class="tab-pill" id="nn-f-fuel">Fuel Tank</button>
+    <button onclick="nnFilter('identity',this)" class="tab-pill" id="nn-f-identity">Identity</button>
+  </div>
+
+  <!-- LAYER 01 -->
+  <h2>Layer 01 — Life Architecture</h2>
+  <p style="color:var(--gray-500);margin-bottom:20px;font-size:14px;">The structural conditions. Get these wrong and nothing downstream works, no matter how good the daily system is.</p>
+  <div id="nn-grid1" style="display:flex;flex-direction:column;gap:8px;margin-bottom:36px;"></div>
+
+  <!-- LAYER 02 -->
+  <h2>Layer 02 — Daily Operating System</h2>
+  <p style="color:var(--gray-500);margin-bottom:20px;font-size:14px;">The maintenance schedule for the machine. These keep the fuel tank full and the TPN engaged.</p>
+  <div id="nn-grid2" style="display:flex;flex-direction:column;gap:8px;margin-bottom:36px;"></div>
+
+  <!-- LAYER 03 -->
+  <h2>Layer 03 — Weekly Guardrails</h2>
+  <p style="color:var(--gray-500);margin-bottom:20px;font-size:14px;">The drift catchers. These prevent slow misalignment from compounding into a full spin-out.</p>
+  <div id="nn-grid3" style="display:flex;flex-direction:column;gap:8px;margin-bottom:36px;"></div>
+
+  <div class="quote-block" style="margin-top:24px;">
+    <strong>When lost, return here:</strong> Does this expand my life or shrink it? Am I acting from faith or from fear? Which path makes commitment inevitable?<br>
+    <em style="display:block;margin-top:6px;">Failure is impossible. Magic is expected. Positive outcomes are inevitable.</em>
+  </div>
+</div>

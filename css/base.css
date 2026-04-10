@@ -1,0 +1,130 @@
+/* ── TOKENS ─────────────────────────────────────────────────────── */
+:root {
+  --orange:      #E8541A;
+  --orange-light:#FFF3EE;
+  --orange-mid:  #F97440;
+  --black:       #111111;
+  --gray-900:    #1a1a1a;
+  --gray-700:    #3d3d3d;
+  --gray-500:    #717171;
+  --gray-300:    #d4d4d4;
+  --gray-100:    #f5f5f5;
+  --gray-50:     #fafafa;
+  --white:       #ffffff;
+  --green:       #16a34a;
+  --yellow:      #ca8a04;
+  --red:         #dc2626;
+  --blue:        #2563eb;
+  --green-bg:    #dcfce7;
+  --yellow-bg:   #fef9c3;
+  --red-bg:      #fee2e2;
+  --blue-bg:     #eff6ff;
+}
+
+/* ── RESET ──────────────────────────────────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 2px; }
+
+/* ── LAYOUT ─────────────────────────────────────────────────────── */
+.app { display: flex; min-height: 100vh; }
+
+/* ── SIDEBAR ────────────────────────────────────────────────────── */
+.sidebar {
+  width: 252px;
+  min-width: 252px;
+  background: var(--gray-50);
+  border-right: 1px solid var(--gray-300);
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.sidebar-logo { padding: 24px 24px 18px; border-bottom: 1px solid var(--gray-300); }
+.sidebar-logo .wordmark { font-weight: 800; font-size: 15px; letter-spacing: -0.02em; color: var(--black); }
+.sidebar-logo .wordmark span { color: var(--orange); }
+.sidebar-logo .tagline { font-size: 11px; color: var(--gray-500); margin-top: 3px; font-weight: 500; }
+
+.nav-section { padding: 10px 0 2px; }
+.nav-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gray-500);
+  padding: 0 20px; margin-bottom: 2px;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 20px; cursor: pointer;
+  font-size: 13px; font-weight: 500; color: var(--gray-500);
+  border-left: 2px solid transparent;
+  transition: all 0.12s;
+}
+.nav-item:hover { color: var(--black); background: rgba(0,0,0,0.03); }
+.nav-item.active {
+  color: var(--orange);
+  border-left-color: var(--orange);
+  background: var(--orange-light);
+  font-weight: 600;
+}
+.nav-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor; opacity: 0.4; flex-shrink: 0;
+}
+.nav-item.active .nav-dot { opacity: 1; }
+
+/* ── MAIN CONTENT ───────────────────────────────────────────────── */
+.main { margin-left: 252px; flex: 1; max-width: 880px; }
+.page { display: none; padding: 52px 56px 88px; }
+.page.active { display: block; }
+
+/* ── PAGE HEADERS ───────────────────────────────────────────────── */
+.page-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--orange); margin-bottom: 8px;
+}
+.page-title {
+  font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
+  letter-spacing: -0.025em; line-height: 1.1;
+  color: var(--black); margin-bottom: 10px;
+}
+.page-subtitle {
+  font-size: 16px; color: var(--gray-500);
+  margin-bottom: 40px; line-height: 1.7; max-width: 560px;
+}
+
+/* ── SECTION LABELS ─────────────────────────────────────────────── */
+.section-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--orange); margin-bottom: 8px;
+}
+h2 {
+  font-size: 20px; font-weight: 800; letter-spacing: -0.02em;
+  color: var(--black); margin: 40px 0 14px; line-height: 1.2;
+}
+h3 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--orange); margin: 22px 0 10px;
+}
+p { color: var(--gray-700); margin-bottom: 12px; }
+strong { color: var(--black); font-weight: 600; }
+em { color: var(--orange); font-style: normal; font-weight: 600; }

@@ -1,0 +1,158 @@
+<div class="page" id="page-unstuck" style="padding:52px 56px 88px;">
+  <div class="page-title">Unstuck Protocol</div>
+  <div class="page-subtitle">Diagnose first. Wrong diagnosis = wrong fix.</div>
+
+  <p style="margin-bottom:20px;"><strong>What's actually happening right now?</strong> Pick one.</p>
+
+  <div class="unstuck-grid">
+    <div class="unstuck-btn" onclick="selectProtocol('start')">
+      <div class="btn-letter">A</div>
+      <div class="btn-label">I can't start</div>
+    </div>
+    <div class="unstuck-btn" onclick="selectProtocol('drift')">
+      <div class="btn-letter">B</div>
+      <div class="btn-label">I started but I'm drifting</div>
+    </div>
+    <div class="unstuck-btn" onclick="selectProtocol('displaced')">
+      <div class="btn-letter">C</div>
+      <div class="btn-label">Productive on the wrong thing</div>
+    </div>
+    <div class="unstuck-btn" onclick="selectProtocol('finish')">
+      <div class="btn-letter">D</div>
+      <div class="btn-label">At the finish line, can't close it</div>
+    </div>
+    <div class="unstuck-btn" onclick="showPage('fuel')">
+      <div class="btn-letter">E</div>
+      <div class="btn-label">Flat, irritable, or scattered</div>
+    </div>
+    <div class="unstuck-btn" onclick="showPage('spiral')">
+      <div class="btn-letter">F</div>
+      <div class="btn-label">In a shame spiral</div>
+    </div>
+    <div class="unstuck-btn" onclick="selectProtocol('overload')">
+      <div class="btn-letter">G</div>
+      <div class="btn-label">Too many things open, can't pick one</div>
+    </div>
+  </div>
+
+  <!-- START FAILURE -->
+  <div class="protocol-box" id="proto-start">
+    <div class="proto-title">Start Failure</div>
+    <div class="proto-why">Ask: What feeling shows up when I think about starting this task?</div>
+    <h3>"It won't be good enough" → Type 1: Idealistic</h3>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">Commit to a bad first version. Say aloud: <strong>"I'm making the ugly version."</strong></span></li>
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">Set a 15-min timer. The only goal is to produce something that exists.</span></li>
+    </ul>
+    <h3>Fear, dread, boredom → Type 2: Avoidance</h3>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">Name the emotion out loud. "I'm dreading this because..." Naming creates distance.</span></li>
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">Find the cathedral. Shift from "I have to write this report" to "I'm building a reputation for clean, fast delivery."</span></li>
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">If you can't find the cathedral, the task may need to be delegated or dropped.</span></li>
+    </ul>
+    <h3>"I don't know where to start" → Type 3: Operational</h3>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">Define the <strong>next single physical action</strong>. Not the project. The literal next move. "Open the doc." "Write one subject line."</span></li>
+    </ul>
+    <h3>None of these fit → Start Sideways</h3>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">Give yourself permission to just peek. Open the file. Read the first paragraph. No commitment to finish. Hyperfocus often takes over once you cross the line.</span></li>
+    </ul>
+    <div class="quote-block" style="margin-top:16px;">Sights-Set Drill: 30s panoramic gaze → 30s narrow focus on one object → speak what you're about to do aloud → start within 60 seconds.</div>
+  </div>
+
+  <!-- DRIFT -->
+  <div class="protocol-box" id="proto-drift">
+    <div class="proto-title">Drift</div>
+    <div class="proto-why">You were working. Now you're somewhere else. The TPN disengaged and the DMN grabbed the wheel.</div>
+    <h3>Task lost novelty</h3>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">why</span><span class="step-text">Fact Finder 6 already extracted the pattern. The remaining work is transcription, not creation.</span></li>
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">Find the unsolved part. Quality edge? Structural improvement? If genuinely nothing left to solve, make it a speed challenge: "Can I finish this in 12 minutes?"</span></li>
+    </ul>
+    <h3>Visual alternative pulled you away</h3>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text"><strong>Full-screen mode. Now.</strong> Close every tab except the task. Phone in another room.</span></li>
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text"><strong>Sticky Note Friction Point:</strong> Before switching context, grab a physical pen. Write your intention: "Switching to Slack to reply to Jake about the deadline." Pulls action out of autopilot into executive function.</span></li>
+    </ul>
+    <h3>Fuel tank drained mid-task</h3>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">fix</span><span class="step-text">Don't push through. Walk 5–10 minutes. Sunlight if possible. Come back with one clear next action.</span></li>
+    </ul>
+  </div>
+
+  <!-- DISPLACED -->
+  <div class="protocol-box" id="proto-displaced">
+    <div class="proto-title">Task Displacement</div>
+    <div class="proto-why">"I'm productive but not on the right task." Most dangerous pattern — it feels like working.</div>
+    <div class="quote-block">Your attention system doesn't prioritize by importance. It prioritizes by cognitive reward. Problem solving, creation, strategy = high reward. Follow-up emails, closing loops, admin = low reward.</div>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">01</span><span class="step-text"><strong>Name the avoided task right now.</strong> Write it on a sticky note. Make it physically visible.</span></li>
+      <li class="step-item"><span class="step-num">02</span><span class="step-text"><strong>Run the ownership check.</strong> Is this mine? Convert: "This deliverable is my reputation."</span></li>
+      <li class="step-item"><span class="step-num">03</span><span class="step-text"><strong>Shrink it.</strong> "Send the email" not "handle the client situation."</span></li>
+      <li class="step-item"><span class="step-num">04</span><span class="step-text"><strong>Do the avoided task first.</strong> Before opening the interesting thing. Your brain will work on the interesting thing regardless — it doesn't need protection.</span></li>
+      <li class="step-item"><span class="step-num">05</span><span class="step-text">If the same task keeps getting displaced day after day — that's signal. Delegate, automate, or drop it.</span></li>
+    </ul>
+  </div>
+
+  <!-- FINISH LINE -->
+  <div class="protocol-box" id="proto-finish">
+    <div class="proto-title">Finish Line Problem</div>
+    <div class="proto-why">You built the thing. It's 80% done. The concept is proven. Your brain wants the next challenge. The last 20% looks like maintenance.</div>
+    <div class="quote-block"><strong>Reframe:</strong> The finish is the next build. The case study = a build. The handoff doc = system design. The final polish = quality architecture. The launch = an experiment.</div>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">01</span><span class="step-text"><strong>Write a one-page done doc.</strong> Define exactly what done looks like. List every remaining task.</span></li>
+      <li class="step-item"><span class="step-num">02</span><span class="step-text"><strong>Ask:</strong> "What am I <em>creating</em> by finishing this?" Not closing — creating.</span></li>
+      <li class="step-item"><span class="step-num">03</span><span class="step-text"><strong>3-minute envision session.</strong> Close your eyes. See the project finished. Feel the relief, pride, momentum.</span></li>
+      <li class="step-item"><span class="step-num">04</span><span class="step-text"><strong>Declare aloud:</strong> "The thinking is done. I am now a Spender."</span></li>
+      <li class="step-item"><span class="step-num">05</span><span class="step-text"><strong>Set a public finish date.</strong> Tell one person. Rename the project with your name.</span></li>
+      <li class="step-item"><span class="step-num">06</span><span class="step-text"><strong>Write a "Wins on Completion" list.</strong> What becomes available when this ships?</span></li>
+      <li class="step-item"><span class="step-num">07</span><span class="step-text">Remove the "I can always come back later" escape hatch.</span></li>
+    </ul>
+  </div>
+
+  <!-- OVERLOAD -->
+  <div class="protocol-box" id="proto-overload">
+    <div class="proto-title">Option Overload</div>
+    <div class="proto-why">Too many tabs. Too many projects. This is pattern saturation, not distraction. Your brain generates options constantly — but possibility space creates decision fatigue.</div>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">01</span><span class="step-text"><strong>Write down every open loop.</strong> All of them. On paper, not digital. Paper forces commitment.</span></li>
+      <li class="step-item"><span class="step-num">02</span><span class="step-text"><strong>Circle the one that matters most this week.</strong> Not the most interesting — the most important. Ask: "Which one, if finished, makes the others easier or irrelevant?"</span></li>
+      <li class="step-item"><span class="step-num">03</span><span class="step-text"><strong>Close everything else.</strong> Literally. Every tab. Every doc. One task, full-screen.</span></li>
+      <li class="step-item"><span class="step-num">04</span><span class="step-text"><strong>Write a "Later" list</strong> for the rest. Your brain needs to know they're captured so it stops holding them in working memory.</span></li>
+      <li class="step-item"><span class="step-num">05</span><span class="step-text"><strong>Set a constraint:</strong> "I'm working on this one thing until [specific time or milestone]."</span></li>
+    </ul>
+    <div class="quote-block">The decisive question: "Which path makes commitment inevitable?" When that switch flips, your brain doesn't wander. It runs.</div>
+  </div>
+
+  <h2 style="margin-top:40px;">Motivation Formula</h2>
+  <div class="quote-block" style="font-size:16px;font-weight:600;font-style:normal;letter-spacing:-0.01em;">Motivation = (Benefit − Cost) × Likelihood of Success</div>
+  <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">When you can't move, one of these three variables is broken. Identify which one, then apply the fix.</p>
+
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <div style="border:1.5px solid var(--gray-300);border-left:4px solid var(--red);border-radius:0 10px 10px 0;padding:16px 18px;background:var(--white);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;background:var(--red-bg);color:var(--red);padding:2px 8px;border-radius:4px;">Variable 1</span>
+        <span style="font-size:14px;font-weight:700;color:var(--black);">Benefit is unclear</span>
+      </div>
+      <div style="font-size:12px;font-weight:600;color:var(--gray-500);margin-bottom:8px;font-style:italic;">"Why does this even matter?"</div>
+      <div style="font-size:13px;color:var(--gray-700);line-height:1.6;"><strong style="color:var(--black);">Fix:</strong> Make the outcome vivid and personal. What does finishing this actually unlock for you? Feel it — don't just think it.</div>
+    </div>
+    <div style="border:1.5px solid var(--gray-300);border-left:4px solid var(--yellow);border-radius:0 10px 10px 0;padding:16px 18px;background:var(--white);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;background:var(--yellow-bg);color:var(--yellow);padding:2px 8px;border-radius:4px;">Variable 2</span>
+        <span style="font-size:14px;font-weight:700;color:var(--black);">Cost feels too high</span>
+      </div>
+      <div style="font-size:12px;font-weight:600;color:var(--gray-500);margin-bottom:8px;font-style:italic;">"This is going to take forever."</div>
+      <div style="font-size:13px;color:var(--gray-700);line-height:1.6;"><strong style="color:var(--black);">Fix:</strong> Shrink the task. You don't have to do the whole thing. Just the first 5 minutes. Lower the cost until starting feels smaller than not starting.</div>
+    </div>
+    <div style="border:1.5px solid var(--gray-300);border-left:4px solid var(--orange);border-radius:0 10px 10px 0;padding:16px 18px;background:var(--white);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;background:var(--orange-light);color:var(--orange);padding:2px 8px;border-radius:4px;">Variable 3</span>
+        <span style="font-size:14px;font-weight:700;color:var(--black);">Low belief in success</span>
+      </div>
+      <div style="font-size:12px;font-weight:600;color:var(--gray-500);margin-bottom:8px;font-style:italic;">"I'll probably fail anyway."</div>
+      <div style="font-size:13px;color:var(--gray-700);line-height:1.6;"><strong style="color:var(--black);">Fix:</strong> Create a smaller version where success is almost guaranteed. Stack wins until the belief shifts. Momentum changes evidence.</div>
+    </div>
+  </div>
+</div>
