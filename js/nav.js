@@ -11,6 +11,7 @@ async function showPage(id) {
   // Inject into main
   const main = document.getElementById('main-content');
   main.innerHTML = pageCache[id];
+  main.querySelector('.page')?.classList.add('active');
 
   // Update nav active state
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
