@@ -1,7 +1,7 @@
 <div class="page" id="page-superpower">
   <div class="page-eyebrow">Core Stack</div>
   <div class="page-title">Superpower Stack</div>
-  <div class="page-subtitle">A compression, translation, and execution system wrapped in trust and energy. Teacher → Translator → Operator. Same wiring. Bigger arena.</div>
+  <div class="page-subtitle">A compression, translation, and execution system wrapped in trust and energy. Teacher, translator, operator. Same wiring. Bigger arena.</div>
 
   <!-- STATS ROW -->
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:36px;">
@@ -24,20 +24,20 @@
   </div>
 
   <!-- IDENTITY TAGS -->
-  <div style="margin-bottom:36px;">
-    <span class="tag tag-orange">Compression</span>
-    <span class="tag tag-orange">Translation</span>
-    <span class="tag tag-orange">Execution</span>
-    <span class="tag tag-gray">ADHD-Wired</span>
-    <span class="tag tag-gray">Kolbe 6-5-5-4</span>
-    <span class="tag tag-gray">Pattern Recognition</span>
-    <span class="tag tag-gray">Judgment-Based</span>
-    <span class="tag tag-gray">Teacher → Operator</span>
+  <div id="sp-identity-row" style="margin-bottom:36px;">
+    <span class="tag tag-orange sp-identity" data-sptag="compression" onclick="filterByTag('compression', this)" style="cursor:pointer;">Compression</span>
+    <span class="tag tag-orange sp-identity" data-sptag="translation" onclick="filterByTag('translation', this)" style="cursor:pointer;">Translation</span>
+    <span class="tag tag-orange sp-identity" data-sptag="execution-trait" onclick="filterByTag('execution-trait', this)" style="cursor:pointer;">Execution</span>
+    <span class="tag tag-gray sp-identity" data-sptag="adhd" onclick="filterByTag('adhd', this)" style="cursor:pointer;">ADHD-Wired</span>
+    <span class="tag tag-gray sp-identity" data-sptag="depth" onclick="filterByTag('depth', this)" style="cursor:pointer;">Depth-First</span>
+    <span class="tag tag-gray sp-identity" data-sptag="pattern" onclick="filterByTag('pattern', this)" style="cursor:pointer;">Pattern Recognition</span>
+    <span class="tag tag-gray sp-identity" data-sptag="judgment" onclick="filterByTag('judgment', this)" style="cursor:pointer;">Judgment-Based</span>
+    <span class="tag tag-gray sp-identity" data-sptag="teacher" onclick="filterByTag('teacher', this)" style="cursor:pointer;">Teacher to Operator</span>
   </div>
 
   <!-- 17 SUPERPOWERS -->
   <h2>17 Active Superpowers</h2>
-  <p style="margin-bottom:16px;">Condensed. These are wiring.</p>
+  <p style="margin-bottom:16px;">Condensed. These are wiring, not learned skills.</p>
 
   <div class="tab-row" id="sp-filter-row">
     <button class="tab-pill active" onclick="filterSuperpowers('all', this)">All 17</button>
@@ -48,106 +48,106 @@
   </div>
 
   <div id="sp-card-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:36px;">
-    <div class="card" data-spcat="cognition" style="margin-bottom:0;">
+    <div class="card" data-spcat="cognition" data-sptags="adhd,execution-trait" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">01</div>
       <div class="card-title">Hyperfocus</div>
-      <p style="font-size:13px;margin-bottom:8px;">When activated, output exceeds everyone in the room. Context-dependent. Impossible to fake.</p>
+      <p style="font-size:13px;margin-bottom:8px;">When activated, output beats everyone else in the room. Context-dependent. Impossible to fake.</p>
       <span class="tag tag-orange">Cognition</span>
     </div>
-    <div class="card" data-spcat="people" style="margin-bottom:0;">
+    <div class="card" data-spcat="people" data-sptags="translation" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">02</div>
       <div class="card-title">People Magnet</div>
       <p style="font-size:13px;margin-bottom:8px;">Instant trust and energy transfer. Relationships compress from months to minutes.</p>
       <span class="tag tag-orange">People</span>
     </div>
-    <div class="card" data-spcat="cognition" style="margin-bottom:0;">
+    <div class="card" data-spcat="cognition" data-sptags="compression,depth,pattern,adhd" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">03</div>
       <div class="card-title">Pattern Recognition</div>
-      <p style="font-size:13px;margin-bottom:8px;">Sees signal others scroll past. Connects dots across domains. Built in.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Sees signal others scroll past. Connects dots across domains. Instinctive, not trained.</p>
       <span class="tag tag-orange">Cognition</span>
     </div>
-    <div class="card" data-spcat="systems" style="margin-bottom:0;">
+    <div class="card" data-spcat="systems" data-sptags="adhd" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">04</div>
       <div class="card-title">Creative Engine</div>
-      <p style="font-size:13px;margin-bottom:8px;">Ideas, systems, copy, design. Runs on curiosity. Obligation kills it.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Ideas, systems, copy, design. Runs on curiosity and wonder, not obligation.</p>
       <span class="tag tag-orange">Systems</span>
     </div>
-    <div class="card" data-spcat="people" style="margin-bottom:0;">
+    <div class="card" data-spcat="people" data-sptags="" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">05</div>
       <div class="card-title">Emotional Intuition</div>
       <p style="font-size:13px;margin-bottom:8px;">Reads needs before they're spoken. Anticipates reactions. Operates ahead of the room.</p>
       <span class="tag tag-orange">People</span>
     </div>
-    <div class="card" data-spcat="people" style="margin-bottom:0;">
+    <div class="card" data-spcat="people" data-sptags="" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">06</div>
       <div class="card-title">Energy Shifter</div>
       <p style="font-size:13px;margin-bottom:8px;">Changes the temperature of rooms, teams, conversations. Present before strategy.</p>
       <span class="tag tag-orange">People</span>
     </div>
-    <div class="card" data-spcat="people" style="margin-bottom:0;">
+    <div class="card" data-spcat="people" data-sptags="translation,teacher" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">07</div>
       <div class="card-title">Translator</div>
-      <p style="font-size:13px;margin-bottom:8px;">Crosses from technical to creative to human and loses nothing in translation. That's the rare part.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Moves between technical, creative, and human fluidly. Loses nothing in the jump.</p>
       <span class="tag tag-orange">People</span>
     </div>
-    <div class="card" data-spcat="people" style="margin-bottom:0;">
+    <div class="card" data-spcat="people" data-sptags="translation,teacher" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">08</div>
       <div class="card-title">Teacher / Simplifier</div>
-      <p style="font-size:13px;margin-bottom:8px;">Makes complex things land. Others "get it" faster through you. The original superpower, pre-monetization.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Makes complex things land. Others get it faster through you. The original superpower, pre-monetization.</p>
       <span class="tag tag-orange">People</span>
     </div>
-    <div class="card" data-spcat="cognition" style="margin-bottom:0;">
+    <div class="card" data-spcat="cognition" data-sptags="compression,depth,judgment" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">09</div>
       <div class="card-title">Compressor</div>
-      <p style="font-size:13px;margin-bottom:8px;">Collapses complexity into clear frames fast. Ships decisions.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Collapses complexity into clear frames, fast. Ships decisions.</p>
       <span class="tag tag-orange">Cognition</span>
     </div>
-    <div class="card" data-spcat="execution" style="margin-bottom:0;">
+    <div class="card" data-spcat="execution" data-sptags="execution-trait" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">10</div>
       <div class="card-title">Execution Bias</div>
-      <p style="font-size:13px;margin-bottom:8px;">Builds toward answers. Doesn't wait for certainty or permission. Mentally solving doesn't count as done.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Builds toward the answer. Doesn't wait for certainty or permission. Clarity in the head doesn't count as done.</p>
       <span class="tag tag-orange">Execution</span>
     </div>
-    <div class="card" data-spcat="execution" style="margin-bottom:0;">
+    <div class="card" data-spcat="execution" data-sptags="execution-trait" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">11</div>
       <div class="card-title">High Agency</div>
-      <p style="font-size:13px;margin-bottom:8px;">No path? Creates one. Defaults to action over analysis. Always moving forward.</p>
+      <p style="font-size:13px;margin-bottom:8px;">No path, creates one. Defaults to action over analysis. Always moving forward.</p>
       <span class="tag tag-orange">Execution</span>
     </div>
-    <div class="card" data-spcat="people" style="margin-bottom:0;">
+    <div class="card" data-spcat="people" data-sptags="teacher" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">12</div>
       <div class="card-title">Connector</div>
-      <p style="font-size:13px;margin-bottom:8px;">Sees the angle between people. Knows who should meet and why before either person does.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Sees angles between people. Knows who should meet and why before either person does.</p>
       <span class="tag tag-orange">People</span>
     </div>
-    <div class="card" data-spcat="cognition" style="margin-bottom:0;">
+    <div class="card" data-spcat="cognition" data-sptags="judgment,pattern" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">13</div>
       <div class="card-title">Game Theory Intuition</div>
-      <p style="font-size:13px;margin-bottom:8px;">Predicts behavior, incentives, and reactions. Downstream thinking at speed.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Predicts behavior, incentives, reactions. Downstream thinking at speed.</p>
       <span class="tag tag-orange">Cognition</span>
     </div>
-    <div class="card" data-spcat="systems" style="margin-bottom:0;">
+    <div class="card" data-spcat="systems" data-sptags="compression" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">14</div>
       <div class="card-title">Systems Builder</div>
-      <p style="font-size:13px;margin-bottom:8px;">Spots inefficiency and builds the fix. Structure earned in motion.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Spots inefficiency, designs the architecture to fix it. Structure earned in motion.</p>
       <span class="tag tag-orange">Systems</span>
     </div>
-    <div class="card" data-spcat="systems" style="margin-bottom:0;">
+    <div class="card" data-spcat="systems" data-sptags="execution-trait" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">15</div>
       <div class="card-title">AI-Native Operator</div>
       <p style="font-size:13px;margin-bottom:8px;">Runs AI like a department, not a feature. Output scales without adding headcount.</p>
       <span class="tag tag-orange">Systems</span>
     </div>
-    <div class="card" data-spcat="execution" style="margin-bottom:0;">
+    <div class="card" data-spcat="execution" data-sptags="execution-trait,judgment" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">16</div>
       <div class="card-title">Earned Credibility</div>
-      <p style="font-size:13px;margin-bottom:8px;">Built from reps. Operates from proof. That's the gap between advice and authority.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Built from reps, not theory. Operates from proof. That's the gap between advice and authority.</p>
       <span class="tag tag-orange">Execution</span>
     </div>
-    <div class="card" data-spcat="cognition" style="margin-bottom:0;">
+    <div class="card" data-spcat="cognition" data-sptags="depth,judgment" style="margin-bottom:0;">
       <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">17</div>
       <div class="card-title">Self-Awareness</div>
-      <p style="font-size:13px;margin-bottom:8px;">Knows wiring, gaps, and patterns. Calibrates. The meta-skill that makes everything else run cleaner.</p>
+      <p style="font-size:13px;margin-bottom:8px;">Knows wiring, gaps, patterns. Adjusts intentionally. The meta-skill that makes everything else run cleaner.</p>
       <span class="tag tag-orange">Cognition</span>
     </div>
   </div>
@@ -160,22 +160,22 @@
     <div class="card" style="margin-bottom:0;border-top:3px solid var(--red);">
       <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:6px;">Cognitive Trap</div>
       <div class="card-title">Stability disguised as safety</div>
-      <p style="font-size:13px;">Titles that don't produce the life become dead weight. Approval can masquerade as ambition. The constraint looks comfortable from the outside.</p>
+      <p style="font-size:13px;">Safety is usually stability wearing a mask. Titles that don't produce the life become dead weight. Approval disguised as ambition.</p>
     </div>
     <div class="card" style="margin-bottom:0;border-top:3px solid var(--red);">
       <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:6px;">Energy Trap</div>
       <div class="card-title">Environments that reward optics</div>
-      <p style="font-size:13px;">Overcommitting to others' urgency. Performative process over real output. The stack drains when the room measures appearances over outcomes.</p>
+      <p style="font-size:13px;">Environments that reward optics over outcomes. Overcommitting to other people's urgency. Performative process instead of real leverage.</p>
     </div>
     <div class="card" style="margin-bottom:0;border-top:3px solid var(--red);">
       <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:6px;">Execution Trap</div>
       <div class="card-title">Clarity in the head doesn't count as done</div>
-      <p style="font-size:13px;">Mentally solving a problem kills the drive to ship it. The loop closes too early. Solved ≠ shipped.</p>
+      <p style="font-size:13px;">Solving a problem mentally kills the drive to ship it. The loop closes too early. Solved is not the same as shipped.</p>
     </div>
     <div class="card" style="margin-bottom:0;border-top:3px solid var(--red);">
       <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:6px;">Structure Trap</div>
       <div class="card-title">Forced sequencing creates friction</div>
-      <p style="font-size:13px;">Rigid SOPs override instinct and drain energy fast. Structure earned in motion. Structure imposed in advance is a cage.</p>
+      <p style="font-size:13px;">Rigid SOPs override instinct and drain energy fast. Structure earned in motion works. Structure imposed in advance is a cage.</p>
     </div>
   </div>
 
@@ -197,12 +197,12 @@
 
   <!-- THE WIRING -->
   <h2>The Wiring</h2>
-  <p style="margin-bottom:16px;">ADHD and Kolbe as source code.</p>
+  <p style="margin-bottom:16px;">ADHD and operating modes as source code.</p>
 
   <div class="card" style="margin-bottom:16px;">
     <h3>ADHD Wiring</h3>
     <div class="card-title" style="margin-bottom:10px;">Attention overload. The supply was never the problem.</div>
-    <p style="font-size:14px;">The brain is built differently. Steering is the problem. When something's interesting, focus goes deeper than most people can follow. Rigid environments call it a liability. The right ones call it source code.</p>
+    <p style="font-size:14px;">ADHD is attention overload, not attention deficit. The problem is steering, not supply. When something's interesting, focus goes deeper than most people can follow. Rigid environments call it a liability. The right ones call it source code.</p>
     <div style="margin-top:14px;">
       <span class="tag tag-orange">Hyperfocus fires at extreme intensity</span>
       <span class="tag tag-orange">Pattern Recognition is instinctive</span>
@@ -210,87 +210,45 @@
     </div>
   </div>
 
-  <h3>Kolbe Index</h3>
-  <div class="kolbe-grid">
-    <div class="kolbe-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-        <div>
-          <div class="kolbe-name">Fact Finder</div>
-          <div style="font-size:11px;color:var(--gray-500);">Information gathering mode</div>
-        </div>
-        <div style="text-align:right;">
-          <div class="kolbe-score">6</div>
-          <span class="tag tag-orange" style="margin:0;">Specify</span>
-        </div>
-      </div>
-      <div style="background:var(--gray-100);border-radius:100px;height:5px;margin-bottom:12px;overflow:hidden;">
-        <div style="width:60%;height:100%;background:var(--orange);border-radius:100px;"></div>
-      </div>
-      <div class="kolbe-desc">Leads with depth before simplicity. Spots what's missing in a brief before others notice anything is wrong. Simplification comes after understanding, never instead of it.</div>
-      <div style="margin-top:10px;">
+  <h3>How You Instinctively Take Action</h3>
+  <p style="margin-bottom:16px;font-size:14px;color:var(--gray-500);">Four operating modes running at once. Separate from personality, IQ, or values. The natural mode that shows up when you're solving a real problem.</p>
+
+  <div class="grid-2">
+    <div class="card" style="margin-bottom:0;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin-bottom:6px;">Mode 01</div>
+      <div class="card-title">How you gather and use information</div>
+      <p style="font-size:13px;margin-bottom:10px;">Depth before simplicity. Full context before a call. Specific questions. Spots what's missing in a brief before others notice anything's wrong. Simplification comes after understanding, never instead of it.</p>
+      <div>
         <span class="tag tag-orange">Pattern Recognition</span>
         <span class="tag tag-orange">Compressor</span>
         <span class="tag tag-orange">Teacher</span>
       </div>
     </div>
-    <div class="kolbe-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-        <div>
-          <div class="kolbe-name">Follow Thru</div>
-          <div style="font-size:11px;color:var(--gray-500);">Systems and sequencing mode</div>
-        </div>
-        <div style="text-align:right;">
-          <div class="kolbe-score">5</div>
-          <span class="tag tag-orange" style="margin:0;">Adapt</span>
-        </div>
-      </div>
-      <div style="background:var(--gray-100);border-radius:100px;height:5px;margin-bottom:12px;overflow:hidden;">
-        <div style="width:50%;height:100%;background:var(--orange);border-radius:100px;"></div>
-      </div>
-      <div class="kolbe-desc">Fluid by default. Follows a system when it serves and drops it when it doesn't. Builds structure in motion. No blueprint needed to start.</div>
-      <div style="margin-top:10px;">
+    <div class="card" style="margin-bottom:0;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin-bottom:6px;">Mode 02</div>
+      <div class="card-title">How you handle systems and sequencing</div>
+      <p style="font-size:13px;margin-bottom:10px;">Flexible with structure, not allergic to it. Follow a system when it serves, drop it when it doesn't. Build structure in motion. No blueprint needed to start, but designed as it goes.</p>
+      <div>
         <span class="tag tag-orange">Systems Builder</span>
         <span class="tag tag-orange">Execution Bias</span>
       </div>
     </div>
-    <div class="kolbe-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-        <div>
-          <div class="kolbe-name">Quick Start</div>
-          <div style="font-size:11px;color:var(--gray-500);">Risk and innovation mode</div>
-        </div>
-        <div style="text-align:right;">
-          <div class="kolbe-score">5</div>
-          <span class="tag tag-orange" style="margin:0;">Modify</span>
-        </div>
-      </div>
-      <div style="background:var(--gray-100);border-radius:100px;height:5px;margin-bottom:12px;overflow:hidden;">
-        <div style="width:50%;height:100%;background:var(--orange);border-radius:100px;"></div>
-      </div>
-      <div class="kolbe-desc">Responsive. Tests ideas before committing. Pushes limits with calculated friction. Adjusts and moves.</div>
-      <div style="margin-top:10px;">
+    <div class="card" style="margin-bottom:0;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin-bottom:6px;">Mode 03</div>
+      <div class="card-title">How you handle risk and new ideas</div>
+      <p style="font-size:13px;margin-bottom:10px;">Responsive, not reckless. Test ideas before committing fully. Push limits with calculated friction, not blind leaps. Middle ground between burning it down and refusing to change.</p>
+      <div>
         <span class="tag tag-orange">Creative Engine</span>
         <span class="tag tag-orange">AI-Native Operator</span>
       </div>
     </div>
-    <div class="kolbe-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-        <div>
-          <div class="kolbe-name">Implementor</div>
-          <div style="font-size:11px;color:var(--gray-500);">Tangible execution mode</div>
-        </div>
-        <div style="text-align:right;">
-          <div class="kolbe-score">4</div>
-          <span class="tag tag-orange" style="margin:0;">Envision</span>
-        </div>
-      </div>
-      <div style="background:var(--gray-100);border-radius:100px;height:5px;margin-bottom:12px;overflow:hidden;">
-        <div style="width:40%;height:100%;background:var(--orange);border-radius:100px;"></div>
-      </div>
-      <div class="kolbe-desc">Thinks in practical terms. Sees how something will work before it exists. Directs, architects, ships it through others.</div>
-      <div style="margin-top:10px;">
+    <div class="card" style="margin-bottom:0;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin-bottom:6px;">Mode 04</div>
+      <div class="card-title">How you work with tangible things</div>
+      <p style="font-size:13px;margin-bottom:10px;">Practical and mental, not manual. See how something will work before it exists. Direct and architect. Hand off execution without losing the vision.</p>
+      <div>
         <span class="tag tag-orange">Systems Builder</span>
-        <span class="tag tag-orange">Vision → Motion</span>
+        <span class="tag tag-orange">Vision to Motion</span>
       </div>
     </div>
   </div>
@@ -301,7 +259,7 @@
 
   <!-- ORANGE BREAK -->
   <div class="orange-break">
-    <h3>You are a compression + translation + execution system.</h3>
+    <h3>You're a compression + translation + execution system.</h3>
     <p>Wrapped in trust and energy. Rare combination. Harder to copy than any tactic.</p>
   </div>
 
@@ -330,7 +288,7 @@
     </div>
     <div class="card" style="margin-bottom:0;border-top:3px solid var(--orange);">
       <h3>Capital</h3>
-      <div class="card-title">Offers + Leverage Bets</div>
+      <div class="card-title">Offers + Leveraged Bets</div>
       <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px;">
         <div style="font-size:13px;color:var(--gray-500);">Productized offers and systems</div>
         <div style="font-size:13px;color:var(--gray-500);">AI implementations sold as outcomes</div>
@@ -340,7 +298,7 @@
   </div>
 
   <div class="rule-block">
-    <strong>Compounding Horizon:</strong> 10 years = top 1% operator in decision-making systems, messaging, AI-assisted execution, and teaching / IP monetization. A tactician's value plateaus when the tactic ages. A judgment-based operator's value compounds as context builds. The teaching layer means knowledge becomes product becomes audience becomes reach. That's a 3-layer compound.
+    <strong>Compounding Horizon:</strong> 10 years = top 1% operator in decision-making systems, messaging, AI-assisted execution, and teaching / IP monetization. A tactician's value plateaus when the tactic ages. A judgment-based operator's value compounds as context builds. The teaching layer means knowledge becomes product becomes audience becomes reach. That's a 3-layer compound, not a 1-layer one.
   </div>
 
   <!-- HIDDEN POWER -->
@@ -365,6 +323,38 @@
     </div>
   </div>
 
+  <!-- RULES CHECK -->
+  <h2 style="margin-top:36px;">Rules Check</h2>
+  <p style="margin-bottom:16px;">The 5 tests, answered. If the wiring's real, these all come back positive.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:36px;">
+    <div class="card" style="margin-bottom:0;text-align:center;padding:18px 14px;">
+      <div style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-0.02em;margin-bottom:6px;">Yes</div>
+      <div style="font-size:12px;color:var(--gray-700);font-weight:600;line-height:1.4;margin-bottom:4px;">Normal to you, impressive to others</div>
+      <div style="font-size:11px;color:var(--gray-500);">Clarity, speed, pattern recognition</div>
+    </div>
+    <div class="card" style="margin-bottom:0;text-align:center;padding:18px 14px;">
+      <div style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-0.02em;margin-bottom:6px;">Yes</div>
+      <div style="font-size:12px;color:var(--gray-700);font-weight:600;line-height:1.4;margin-bottom:4px;">Done without incentives</div>
+      <div style="font-size:11px;color:var(--gray-500);">Analysis, restructuring, systems</div>
+    </div>
+    <div class="card" style="margin-bottom:0;text-align:center;padding:18px 14px;">
+      <div style="font-size:22px;font-weight:800;color:var(--yellow);letter-spacing:-0.02em;margin-bottom:6px;">Partial</div>
+      <div style="font-size:12px;color:var(--gray-700);font-weight:600;line-height:1.4;margin-bottom:4px;">Hidden because irrational</div>
+      <div style="font-size:11px;color:var(--gray-500);">Depth of obsession</div>
+    </div>
+    <div class="card" style="margin-bottom:0;text-align:center;padding:18px 14px;">
+      <div style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-0.02em;margin-bottom:6px;">Yes</div>
+      <div style="font-size:12px;color:var(--gray-700);font-weight:600;line-height:1.4;margin-bottom:4px;">Consistent since childhood</div>
+      <div style="font-size:11px;color:var(--gray-500);">Teacher and simplifier</div>
+    </div>
+    <div class="card" style="margin-bottom:0;text-align:center;padding:18px 14px;">
+      <div style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-0.02em;margin-bottom:6px;">Yes</div>
+      <div style="font-size:12px;color:var(--gray-700);font-weight:600;line-height:1.4;margin-bottom:4px;">Would do it even if it failed</div>
+      <div style="font-size:11px;color:var(--gray-500);">Non-negotiable</div>
+    </div>
+  </div>
+
   <!-- FINAL COMPRESSION -->
   <h2>The Final Compression</h2>
   <p style="margin-bottom:24px;">Naval frame. Specific knowledge. Named clean.</p>
@@ -372,7 +362,7 @@
   <div style="background:var(--gray-50);border:1.5px solid var(--gray-300);border-radius:14px;padding:36px;text-align:center;margin-bottom:16px;">
     <div class="section-label">Specific Knowledge</div>
     <div style="font-size:clamp(18px,2.5vw,26px);font-weight:800;letter-spacing:-0.025em;line-height:1.3;margin:16px 0 20px;">Seeing patterns in human behavior, messaging, and systems. Compressing them into <em>clear, actionable decisions</em>.</div>
-    <p style="font-size:14px;color:var(--gray-500);max-width:480px;margin:0 auto 20px;">It compounds through repetition across domains and refinement of judgment. It scales through AI systems, media, and direct execution.</p>
+    <p style="font-size:14px;color:var(--gray-500);max-width:480px;margin:0 auto 20px;">Compounds through repetition across domains and refinement of judgment. Scales through AI systems, media, and leveraged execution.</p>
     <div>
       <span class="tag tag-orange">Compression</span>
       <span class="tag tag-orange">Translation</span>
@@ -388,12 +378,12 @@
   </div>
 </div>
 
-<script>
-function filterSuperpowers(cat, btn) {
-  document.querySelectorAll('#sp-filter-row .tab-pill').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('#sp-card-grid .card').forEach(card => {
-    card.style.display = (cat === 'all' || card.dataset.spcat === cat) ? '' : 'none';
-  });
+<style>
+#sp-identity-row .sp-identity { transition: transform 0.15s, box-shadow 0.15s; }
+#sp-identity-row .sp-identity:hover { transform: translateY(-1px); }
+#sp-identity-row .sp-identity.sp-identity-active {
+  background: var(--black) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
-</script>
+</style>
