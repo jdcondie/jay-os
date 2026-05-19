@@ -38,6 +38,7 @@ async function showPage(id) {
   if (id === '7day')   initDayTabs();
   if (id === 'scenes') initScenes();
   if (id === 'manifestos') initManifestos();
+  if (id === 'install') initInstall();
 }
 
 // ── MOBILE MENU ───────────────────────────────────────────────────
@@ -66,6 +67,7 @@ const BTAB_MAP = {
   manifestation: 'btab-vision', presence: 'btab-vision',
   irreversible: 'btab-all', prompts: 'btab-all',
   rewiring: 'btab-all', traits: 'btab-all',
+  install: 'btab-all',
 };
 function updateBtab(pageId) {
   document.querySelectorAll('.btab').forEach(b => b.classList.remove('active'));
