@@ -130,7 +130,7 @@ function showDay(n) {
 
 // ── SCENES PAGE ───────────────────────────────────────────────────
 function initScenes() {
-  showScene(1);
+  showScene(0);
 }
 function showScene(n) {
   document.querySelectorAll('.scene-content').forEach(el => el.classList.remove('visible'));
