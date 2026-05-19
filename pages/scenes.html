@@ -8,29 +8,46 @@
   </div>
 
   <style>
-    /* Make script prose match the jay-os carded aesthetic */
+    /* Editorial script typography — one continuous read */
     .scene-content > h2 {
-      font-size:26px; letter-spacing:-0.025em; margin:6px 0 14px;
+      font-size:28px; letter-spacing:-0.025em; margin:8px 0 14px;
     }
     .scene-content > .section-label { margin-bottom:4px; }
+    .scene-content > .quote-block { margin-bottom:28px; font-size:13px; }
+
     .scene-content > p {
-      background:var(--white);
-      border:1.5px solid var(--gray-300);
-      border-radius:10px;
-      padding:14px 18px;
-      margin-bottom:8px;
-      font-size:15px;
-      line-height:1.7;
+      font-size:16px;
+      line-height:1.8;
       color:var(--gray-700);
+      margin:0 0 20px;
+      max-width:64ch;
     }
-    .scene-content > p:hover { border-color:var(--orange); }
     .scene-content > p em {
       color:var(--orange); font-weight:600; font-style:normal;
     }
-    .scene-content > .quote-block { margin-bottom:18px; font-size:13px; }
-    .scene-content > .orange-break { margin-top:24px; }
+    /* First paragraph of each script = the identity declaration. Larger. */
+    .scene-content > h2 + .quote-block + p,
+    .scene-content > .section-label + h2 + .quote-block + p {
+      font-size:20px;
+      line-height:1.5;
+      color:var(--black);
+      font-weight:600;
+      letter-spacing:-0.01em;
+      margin-bottom:24px;
+      max-width:48ch;
+    }
+
+    .scene-content > .orange-break { margin-top:36px; max-width:64ch; }
     .scene-content > .orange-break h3 {
       font-size:22px; font-weight:800; letter-spacing:-0.02em;
+    }
+
+    @media (max-width:640px) {
+      .scene-content > p { font-size:15px; line-height:1.75; }
+      .scene-content > h2 + .quote-block + p,
+      .scene-content > .section-label + h2 + .quote-block + p {
+        font-size:18px;
+      }
     }
   </style>
 
