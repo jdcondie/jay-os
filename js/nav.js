@@ -2,6 +2,11 @@
 const pageCache = {};
 
 async function showPage(id) {
+  // Sync URL hash so refresh + back/forward restore the current page
+  if (location.hash.slice(1) !== id) {
+    history.replaceState(null, '', '#' + id);
+  }
+
   // Load page HTML if not cached
   if (!pageCache[id]) {
     const res = await fetch(`pages/${id}.html`);
@@ -155,4 +160,14 @@ function showManifesto(id) {
 }
 
 // ── INIT ──────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => showPage('home'));
+function initialPageId() {
+  const fromHash = location.hash.slice(1);
+  return fromHash && document.querySelector(`.nav-item[data-page="${fromHash}"]`)
+    ? fromHash
+    : 'home';
+}
+document.addEventListener('DOMContentLoaded', () => showPage(initialPageId()));
+window.addEventListener('hashchange', () => {
+  const id = location.hash.slice(1);
+  if (id && document.querySelector(`.nav-item[data-page="${id}"]`)) showPage(id);
+});
