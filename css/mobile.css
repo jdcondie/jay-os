@@ -88,5 +88,4 @@
 
   .unstuck-grid { grid-template-columns: 1fr 1fr; }
 
-  .home-day-grid { grid-template-columns: 1fr 1fr !important; }
 }

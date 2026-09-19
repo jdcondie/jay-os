@@ -2,7 +2,10 @@
 const pageCache = {};
 let currentPageId = 'home';
 
+const REDIRECTS = { 'daily-sheet': 'home' };
+
 async function showPage(id) {
+  if (REDIRECTS[id]) id = REDIRECTS[id];
   currentPageId = id;
   // Sync URL hash so refresh + back/forward restore the current page
   if (location.hash.slice(1) !== id) {
