@@ -1,5 +1,5 @@
 // ── IDENTITY INSTALL — 30-DAY PROTOCOL ─────────────────────────────
-const INSTALL_KEY = 'jay-install-v1';
+// Lives under OS.programs.install so one export covers everything.
 
 // ── DEFAULT STATE ─────────────────────────────────────────────────
 function installDefaults() {
@@ -51,21 +51,16 @@ function auditDefaults() {
 let installState = loadInstall();
 
 function loadInstall() {
-  try {
-    const raw = localStorage.getItem(INSTALL_KEY);
-    if (!raw) return installDefaults();
-    return Object.assign(installDefaults(), JSON.parse(raw));
-  } catch (e) {
-    return installDefaults();
-  }
+  return deepDefaults(installDefaults(), OS.programs.install);
 }
 function saveInstall() {
-  try { localStorage.setItem(INSTALL_KEY, JSON.stringify(installState)); } catch (e) {}
+  OS.programs.install = installState;
+  saveOS();
 }
 
 // ── HELPERS ───────────────────────────────────────────────────────
 function instToday() {
-  return new Date().toISOString().split('T')[0];
+  return getToday();
 }
 function instDaysBetween(start, end) {
   const a = new Date(start + 'T00:00:00');

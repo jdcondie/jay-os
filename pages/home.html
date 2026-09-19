@@ -30,7 +30,7 @@
     <div>
       <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:8px;">Today's One Thing</div>
       <input id="home-intention" type="text" placeholder="The single move that makes today a win..."
-        onchange="saveIntention(this.value)" oninput="saveIntention(this.value)"
+        data-persist="day.intention"
         style="width:100%;background:var(--gray-50);border:1.5px solid var(--gray-300);border-radius:10px;padding:12px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:var(--black);outline:none;transition:border-color 0.15s;"
         onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--gray-300)'">
     </div>

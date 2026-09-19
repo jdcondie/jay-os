@@ -67,8 +67,18 @@ const NN_DATA = [
     sub:"Your operating level is set by who's in the room.", tags:['fuel'] },
 ];
 
+// ── DAILY FIVE ────────────────────────────────────────────────────
+// The five that are actually daily actions. Layer 1 is life architecture
+// and layer 3 is a weekly sweep — neither belongs in a daily checkbox.
+const NN_DAILY = ['daily1', 'daily2', 'daily3', 'daily4', 'daily5'];
+
 // ── FILTER STATE ──────────────────────────────────────────────────
 let nnFilterVal = 'all';
+
+function nnChecked() {
+  const d = today();
+  return d.nn || (d.nn = {});
+}
 
 // ── TAG HELPERS ───────────────────────────────────────────────────
 function tagLabel(t) {
@@ -87,7 +97,7 @@ function nnRenderLayer(layer, gridId) {
   const items = NN_DATA.filter(d => d.layer === layer).sort((a, b) => a.rank - b.rank);
   grid.innerHTML = '';
   items.forEach(item => {
-    const checked = !!nnState.checked[item.id];
+    const checked = !!nnChecked()[item.id];
     const visible = nnFilterVal === 'all' || item.tags.includes(nnFilterVal);
     if (!visible) return;
 
@@ -115,7 +125,7 @@ function nnRenderLayer(layer, gridId) {
 // ── UPDATE PROGRESS ───────────────────────────────────────────────
 function nnUpdateProgress() {
   const total   = NN_DATA.length;
-  const checked = NN_DATA.filter(d => nnState.checked[d.id]).length;
+  const checked = NN_DATA.filter(d => nnChecked()[d.id]).length;
   const pct     = Math.round((checked / total) * 100);
   const bar     = document.getElementById('nn-fill');
   const label   = document.getElementById('nn-label');
@@ -135,9 +145,10 @@ function nnRenderAll() {
 
 // ── TOGGLE ────────────────────────────────────────────────────────
 function nnToggle(id) {
-  if (nnState.checked[id]) delete nnState.checked[id];
-  else nnState.checked[id] = true;
-  saveState(NN_KEY, nnState);
+  const checked = nnChecked();
+  if (checked[id]) delete checked[id];
+  else checked[id] = true;
+  saveOS();
   nnRenderAll();
   if (typeof updateHomeStats === 'function') updateHomeStats();
 }
@@ -152,7 +163,7 @@ function nnFilter(type, btn) {
 
 // ── RESET ─────────────────────────────────────────────────────────
 function nnReset() {
-  nnState.checked = {};
-  saveState(NN_KEY, nnState);
+  today().nn = {};
+  saveOS();
   nnRenderAll();
 }

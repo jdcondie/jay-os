@@ -17,17 +17,14 @@ function initHome() {
   if (dateEl) dateEl.textContent = d.toLocaleDateString('en-US',
     { weekday: 'long', month: 'long', day: 'numeric' }).toUpperCase();
 
-  // Restore intention
-  const intentEl = document.getElementById('home-intention');
-  if (intentEl) intentEl.value = homeState.intention || '';
-
-  // Restore day type
-  if (homeState.dayType) {
+  // Intention hydrates from data-persist. Day type needs the button state.
+  const dayType = today().dayType;
+  if (dayType) {
     document.querySelectorAll('.home-day-btn').forEach(btn => {
-      if (btn.querySelector('.home-day-label')?.textContent.trim() === homeState.dayType)
+      if (btn.querySelector('.home-day-label')?.textContent.trim() === dayType)
         btn.classList.add('selected');
     });
-    updateStartBtn(homeState.dayType);
+    updateStartBtn(dayType);
   }
 
   updateHomeStats();
@@ -35,8 +32,8 @@ function initHome() {
 
 // ── SET DAY TYPE ──────────────────────────────────────────────────
 function setDayType(type, btn) {
-  homeState.dayType = type;
-  saveState(HOME_KEY, homeState);
+  today().dayType = type;
+  saveOS();
   document.querySelectorAll('.home-day-btn').forEach(b => b.classList.remove('selected'));
   if (btn) btn.classList.add('selected');
   updateStartBtn(type);
@@ -50,16 +47,16 @@ function updateStartBtn(type) {
   btn.onclick = () => showPage(DAY_TYPE_PAGE[type] || 'unstuck');
 }
 
-// ── SAVE INTENTION ────────────────────────────────────────────────
-function saveIntention(val) {
-  homeState.intention = val;
-  saveState(HOME_KEY, homeState);
+// ── HOME STATS ────────────────────────────────────────────────────
+function dayWasWon(d) {
+  if (d.closed === 'no')  return false;
+  if (d.closed === 'yes') return true;
+  return NN_DAILY.every(id => d.nn && d.nn[id]);
 }
 
-// ── HOME STATS ────────────────────────────────────────────────────
 function updateHomeStats() {
   const total   = typeof NN_DATA !== 'undefined' ? NN_DATA.length : 30;
-  const checked = Object.keys(nnState.checked || {}).length;
+  const checked = Object.keys(today().nn || {}).length;
   const pct     = Math.round((checked / total) * 100);
 
   const bar    = document.getElementById('home-nn-bar');
@@ -70,5 +67,8 @@ function updateHomeStats() {
   if (bar)   { bar.style.width = pct + '%'; bar.style.background = pct >= 100 ? 'var(--green)' : 'var(--orange)'; }
   if (txt)   txt.textContent = `${checked} / ${total}`;
   if (pctEl) { pctEl.textContent = pct + '%'; pctEl.style.color = pct >= 100 ? 'var(--green)' : 'var(--gray-500)'; }
-  if (streak) streak.textContent = (nnState.streak || 0) + ' day streak';
+  if (streak) {
+    const n = computeStreak(dayWasWon);
+    streak.textContent = n === 1 ? '1 day streak' : n + ' day streak';
+  }
 }

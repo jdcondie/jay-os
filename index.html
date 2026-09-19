@@ -164,6 +164,19 @@
         <div class="nav-dot"></div> High Performer Traits
       </div>
     </div>
+  
+    <div class="nav-section" style="margin-top:8px;border-top:1px solid var(--gray-300);padding-top:12px;">
+      <div class="nav-label">Data</div>
+      <div class="nav-item" onclick="exportJSON()">
+        <div class="nav-dot"></div> Export backup
+      </div>
+      <div class="nav-item" onclick="document.getElementById('import-file').click()">
+        <div class="nav-dot"></div> Import backup
+      </div>
+      <input type="file" id="import-file" accept=".json,application/json"
+             style="display:none;" onchange="importFile(this)">
+    </div>
+
   </nav>
 
   <!-- MAIN CONTENT — pages injected here -->

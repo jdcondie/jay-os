@@ -1,7 +1,9 @@
 // ── PAGE CACHE ────────────────────────────────────────────────────
 const pageCache = {};
+let currentPageId = 'home';
 
 async function showPage(id) {
+  currentPageId = id;
   // Sync URL hash so refresh + back/forward restore the current page
   if (location.hash.slice(1) !== id) {
     history.replaceState(null, '', '#' + id);
@@ -17,6 +19,11 @@ async function showPage(id) {
   const main = document.getElementById('main-content');
   main.innerHTML = pageCache[id];
   main.querySelector('.page')?.classList.add('active');
+
+  // Fill saved values back in. Runs every time, not just the first fetch —
+  // the page cache re-injects fresh DOM on every visit.
+  rolloverCheck(true);
+  hydrate(main);
 
   // Update nav active state
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -39,7 +46,6 @@ async function showPage(id) {
   // Run page-specific init
   if (id === 'home')   initHome();
   if (id === 'nonneg') nnRenderAll();
-  if (id === 'rhythm') initRhythm();
   if (id === '7day')   initDayTabs();
   if (id === 'scenes') initScenes();
   if (id === 'manifestos') initManifestos();
@@ -107,19 +113,6 @@ function showTab(prefix, id) {
   document.getElementById(`tab-${prefix}-btn-${id}`)?.classList.add('active');
 }
 
-// ── RHYTHM PAGE ───────────────────────────────────────────────────
-function initRhythm() {
-  document.querySelectorAll('.day-type-card').forEach(card => {
-    const label = card.querySelector('.day-type-label')?.textContent.trim();
-    if (label === homeState.dayType) card.classList.add('selected');
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.day-type-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      setDayType(label, null);
-    });
-  });
-}
-
 // ── 7-DAY PAGE ────────────────────────────────────────────────────
 function initDayTabs() {
   showDay(1);
@@ -158,6 +151,55 @@ function showManifesto(id) {
   if (el)  el.classList.add('visible');
   if (btn) btn.classList.add('active');
 }
+
+// ── PERSISTENCE ───────────────────────────────────────────────────
+// One delegated listener for the whole app. Pages are injected with
+// innerHTML, so per-element listeners would die on every navigation.
+function onPersist(e) {
+  const el = e.target;
+  const path = el && el.dataset && el.dataset.persist;
+  if (!path) return;
+  if (el.type === 'checkbox') {
+    persistSet(path, el.checked);
+    el.closest('.check-item')?.classList.toggle('checked', el.checked);
+  } else {
+    persistSet(path, el.value);
+  }
+}
+document.addEventListener('input',  onPersist);
+document.addEventListener('change', onPersist);
+
+function hydrate(root) {
+  root.querySelectorAll('[data-persist]').forEach(el => {
+    const v = persistGet(el.dataset.persist);
+    if (el.type === 'checkbox') {
+      el.checked = !!v;
+      el.closest('.check-item')?.classList.toggle('checked', !!v);
+    } else if (v != null) {
+      el.value = v;
+    }
+  });
+  root.querySelectorAll('[data-autodate]').forEach(el => {
+    el.value = new Date().toLocaleDateString('en-US',
+      { weekday: 'long', month: 'long', day: 'numeric' });
+  });
+}
+
+// ── MIDNIGHT ROLLOVER ─────────────────────────────────────────────
+// The tab can sit open across midnight. Writes always resolve today()
+// at write time, so this only has to repaint.
+function rolloverCheck(quiet) {
+  const t = getToday();
+  if (OS.meta.lastOpen === t) return;
+  flushSave();
+  OS.meta.lastOpen = t;
+  flushSave();
+  if (!quiet) showPage(currentPageId);
+}
+setInterval(() => rolloverCheck(false), 60000);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) rolloverCheck(false);
+});
 
 // ── INIT ──────────────────────────────────────────────────────────
 function initialPageId() {
