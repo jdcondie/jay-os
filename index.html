@@ -19,7 +19,7 @@
 
 <!-- MOBILE TOP BAR -->
 <div class="mobile-topbar">
-  <div class="mobile-topbar-title" id="mobile-title">Mission Control</div>
+  <div class="mobile-topbar-title" id="mobile-title">Today</div>
 </div>
 
 <!-- OVERLAY -->
@@ -27,25 +27,21 @@
 
 <!-- BOTTOM TAB BAR -->
 <div class="bottom-tab-bar" id="bottom-tab-bar">
-  <button class="btab active" id="btab-home" onclick="btabNav('home',this)">
-    <span class="btab-icon">🏠</span>
-    <span class="btab-label">Home</span>
+  <button class="btab active" id="btab-home" onclick="btabNav('home')">
+    <span class="btab-icon">☀️</span>
+    <span class="btab-label">Today</span>
   </button>
-  <button class="btab" id="btab-moment" onclick="btabNav('unstuck',this)">
+  <button class="btab" id="btab-fix" onclick="btabNav('unstuck')">
     <span class="btab-icon">🔧</span>
-    <span class="btab-label">Fix It</span>
+    <span class="btab-label">Fix</span>
   </button>
-  <button class="btab" id="btab-worksheets" onclick="btabNav('nonneg',this)">
-    <span class="btab-icon">✅</span>
-    <span class="btab-label">Check In</span>
+  <button class="btab" id="btab-programs" onclick="btabNav('install')">
+    <span class="btab-icon">📅</span>
+    <span class="btab-label">Programs</span>
   </button>
-  <button class="btab" id="btab-vision" onclick="btabNav('scenes',this)">
-    <span class="btab-icon">🌄</span>
-    <span class="btab-label">Vision</span>
-  </button>
-  <button class="btab" id="btab-all" onclick="toggleMenu()">
-    <span class="btab-icon">☰</span>
-    <span class="btab-label">All</span>
+  <button class="btab" id="btab-library" onclick="btabNav('library')">
+    <span class="btab-icon">📚</span>
+    <span class="btab-label">Library</span>
   </button>
 </div>
 
@@ -59,109 +55,57 @@
     </div>
 
     <div class="nav-section">
-      <div class="nav-label">Home</div>
       <div class="nav-item" data-page="home" onclick="showPage('home')">
         <div class="nav-dot"></div> Today
       </div>
+      <div class="nav-item" data-page="unstuck" onclick="showPage('unstuck')">
+        <div class="nav-dot"></div> Fix
+      </div>
+      <div class="nav-item" data-page="library" onclick="showPage('library')">
+        <div class="nav-dot"></div> Library
+      </div>
     </div>
 
     <div class="nav-section">
-      <div class="nav-label">Core</div>
-      <div class="nav-item" data-page="machine" onclick="showPage('machine')">
-        <div class="nav-dot"></div> The Machine
-      </div>
-      <div class="nav-item" data-page="identity" onclick="showPage('identity')">
-        <div class="nav-dot"></div> Identity &amp; Ownership
-      </div>
+      <div class="nav-label">Programs</div>
       <div class="nav-item" data-page="install" onclick="showPage('install')">
         <div class="nav-dot"></div> Identity Install (30d)
       </div>
-      <div class="nav-item" data-page="superpower" onclick="showPage('superpower')">
-        <div class="nav-dot"></div> Superpower Stack
-      </div>
-    </div>
-
-    <div class="nav-section">
-      <div class="nav-label">In-the-Moment</div>
-      <div class="nav-item" data-page="unstuck" onclick="showPage('unstuck')">
-        <div class="nav-dot"></div> Unstuck Protocol
-      </div>
-      <div class="nav-item" data-page="fuel" onclick="showPage('fuel')">
-        <div class="nav-dot"></div> Fuel Tank
-      </div>
-      <div class="nav-item" data-page="spiral" onclick="showPage('spiral')">
-        <div class="nav-dot"></div> Spiral Protocol
-      </div>
-    </div>
-
-    <div class="nav-section">
-      <div class="nav-label">Daily</div>
-      <div class="nav-item" data-page="rhythm" onclick="showPage('rhythm')">
-        <div class="nav-dot"></div> Daily Rhythm
-      </div>
-      <div class="nav-item" data-page="deepwork" onclick="showPage('deepwork')">
-        <div class="nav-dot"></div> Deep Work OS
-      </div>
-    </div>
-
-    <div class="nav-section">
-      <div class="nav-label">Decisions</div>
-      <div class="nav-item" data-page="filters" onclick="showPage('filters')">
-        <div class="nav-dot"></div> Decision Filters
-      </div>
-    </div>
-
-    <div class="nav-section">
-      <div class="nav-label">Worksheets</div>
-      <div class="nav-item" data-page="weekly" onclick="showPage('weekly')">
-        <div class="nav-dot"></div> Weekly Recalibration
+      <div class="nav-item" data-page="rewiring" onclick="showPage('rewiring')">
+        <div class="nav-dot"></div> Behavior Rewiring (14d)
       </div>
       <div class="nav-item" data-page="7day" onclick="showPage('7day')">
         <div class="nav-dot"></div> 7-Day Identity Cycle
       </div>
+      <div class="nav-item" data-page="weekly" onclick="showPage('weekly')">
+        <div class="nav-dot"></div> Weekly Recalibration
+      </div>
       <div class="nav-item" data-page="annual" onclick="showPage('annual')">
         <div class="nav-dot"></div> Annual Reflection
       </div>
-      <div class="nav-item" data-page="rules" onclick="showPage('rules')">
-        <div class="nav-dot"></div> Rules of Thumb
-      </div>
-      <div class="nav-item" data-page="nonneg" onclick="showPage('nonneg')">
-        <div class="nav-dot"></div> Non-Negotiables
-      </div>
     </div>
 
-    <div class="nav-section">
-      <div class="nav-label">Vision &amp; Identity</div>
-      <div class="nav-item" data-page="scenes" onclick="showPage('scenes')">
-        <div class="nav-dot"></div> Vision Scenes
-      </div>
-      <div class="nav-item" data-page="manifestos" onclick="showPage('manifestos')">
-        <div class="nav-dot"></div> Manifestos &amp; Creeds
-      </div>
-      <div class="nav-item" data-page="manifestation" onclick="showPage('manifestation')">
-        <div class="nav-dot"></div> Manifestation Process
-      </div>
-      <div class="nav-item" data-page="presence" onclick="showPage('presence')">
-        <div class="nav-dot"></div> Presence &amp; Confidence
-      </div>
-    </div>
+    <details class="nav-fold">
+      <summary class="nav-label">Reference</summary>
+      <div class="nav-item" data-page="machine" onclick="showPage('machine')"><div class="nav-dot"></div> The Machine</div>
+      <div class="nav-item" data-page="identity" onclick="showPage('identity')"><div class="nav-dot"></div> Identity &amp; Ownership</div>
+      <div class="nav-item" data-page="superpower" onclick="showPage('superpower')"><div class="nav-dot"></div> Superpower Stack</div>
+      <div class="nav-item" data-page="traits" onclick="showPage('traits')"><div class="nav-dot"></div> High Performer Traits</div>
+      <div class="nav-item" data-page="rules" onclick="showPage('rules')"><div class="nav-dot"></div> Rules of Thumb</div>
+      <div class="nav-item" data-page="nonneg" onclick="showPage('nonneg')"><div class="nav-dot"></div> Non-Negotiables</div>
+      <div class="nav-item" data-page="fuel" onclick="showPage('fuel')"><div class="nav-dot"></div> Fuel Tank</div>
+      <div class="nav-item" data-page="spiral" onclick="showPage('spiral')"><div class="nav-dot"></div> Spiral Protocol</div>
+      <div class="nav-item" data-page="filters" onclick="showPage('filters')"><div class="nav-dot"></div> Decision Filters</div>
+      <div class="nav-item" data-page="irreversible" onclick="showPage('irreversible')"><div class="nav-dot"></div> Make It Irreversible</div>
+      <div class="nav-item" data-page="rhythm" onclick="showPage('rhythm')"><div class="nav-dot"></div> Daily Rhythm</div>
+      <div class="nav-item" data-page="deepwork" onclick="showPage('deepwork')"><div class="nav-dot"></div> Deep Work OS</div>
+      <div class="nav-item" data-page="scenes" onclick="showPage('scenes')"><div class="nav-dot"></div> Vision Scenes</div>
+      <div class="nav-item" data-page="manifestos" onclick="showPage('manifestos')"><div class="nav-dot"></div> Manifestos &amp; Creeds</div>
+      <div class="nav-item" data-page="manifestation" onclick="showPage('manifestation')"><div class="nav-dot"></div> Manifestation Process</div>
+      <div class="nav-item" data-page="presence" onclick="showPage('presence')"><div class="nav-dot"></div> Presence &amp; Confidence</div>
+      <div class="nav-item" data-page="prompts" onclick="showPage('prompts')"><div class="nav-dot"></div> Journal Prompts</div>
+    </details>
 
-    <div class="nav-section">
-      <div class="nav-label">Action &amp; Rewiring</div>
-      <div class="nav-item" data-page="irreversible" onclick="showPage('irreversible')">
-        <div class="nav-dot"></div> Make It Irreversible
-      </div>
-      <div class="nav-item" data-page="prompts" onclick="showPage('prompts')">
-        <div class="nav-dot"></div> Journal Prompts
-      </div>
-      <div class="nav-item" data-page="rewiring" onclick="showPage('rewiring')">
-        <div class="nav-dot"></div> Behavior Rewiring
-      </div>
-      <div class="nav-item" data-page="traits" onclick="showPage('traits')">
-        <div class="nav-dot"></div> High Performer Traits
-      </div>
-    </div>
-  
     <div class="nav-section" style="margin-top:8px;border-top:1px solid var(--gray-300);padding-top:12px;">
       <div class="nav-label">Data</div>
       <div class="nav-item" onclick="exportJSON()">

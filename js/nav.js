@@ -68,24 +68,20 @@ function closeMenu() {
 }
 
 // ── BOTTOM TAB BAR ────────────────────────────────────────────────
+const PAGES = ['home','unstuck','library','install','rewiring','7day','weekly','annual',
+  'machine','identity','superpower','traits','rules','nonneg','fuel','spiral','filters',
+  'irreversible','rhythm','deepwork','scenes','manifestos','manifestation','presence','prompts'];
+
 const BTAB_MAP = {
   home: 'btab-home',
-  machine: 'btab-all', identity: 'btab-all',
-  unstuck: 'btab-moment', fuel: 'btab-moment', spiral: 'btab-moment',
-  rhythm: 'btab-worksheets', deepwork: 'btab-worksheets',
-  filters: 'btab-worksheets', 'daily-sheet': 'btab-worksheets',
-  weekly: 'btab-worksheets', '7day': 'btab-worksheets',
-  annual: 'btab-worksheets', rules: 'btab-worksheets',
-  nonneg: 'btab-worksheets',
-  scenes: 'btab-vision', manifestos: 'btab-vision',
-  manifestation: 'btab-vision', presence: 'btab-vision',
-  irreversible: 'btab-all', prompts: 'btab-all',
-  rewiring: 'btab-all', traits: 'btab-all',
-  install: 'btab-all',
+  unstuck: 'btab-fix', fuel: 'btab-fix', spiral: 'btab-fix',
+  filters: 'btab-fix', irreversible: 'btab-fix',
+  install: 'btab-programs', rewiring: 'btab-programs', '7day': 'btab-programs',
+  weekly: 'btab-programs', annual: 'btab-programs',
 };
 function updateBtab(pageId) {
   document.querySelectorAll('.btab').forEach(b => b.classList.remove('active'));
-  const t = document.getElementById(BTAB_MAP[pageId] || 'btab-all');
+  const t = document.getElementById(BTAB_MAP[pageId] || 'btab-library');
   if (t) t.classList.add('active');
 }
 function btabNav(pageId) {
@@ -93,10 +89,10 @@ function btabNav(pageId) {
 }
 
 // ── PROTOCOL SELECTOR (unstuck page) ─────────────────────────────
-function selectProtocol(id) {
+function selectProtocol(id, btn) {
   document.querySelectorAll('.unstuck-btn').forEach(b => b.classList.remove('selected'));
   document.querySelectorAll('.protocol-box').forEach(b => b.classList.remove('visible'));
-  event.currentTarget.classList.add('selected');
+  (btn || document.querySelector('.unstuck-btn[data-proto="' + id + '"]'))?.classList.add('selected');
   const box = document.getElementById('proto-' + id);
   if (box) box.classList.add('visible');
 }
@@ -206,13 +202,11 @@ document.addEventListener('visibilitychange', () => {
 
 // ── INIT ──────────────────────────────────────────────────────────
 function initialPageId() {
-  const fromHash = location.hash.slice(1);
-  return fromHash && document.querySelector(`.nav-item[data-page="${fromHash}"]`)
-    ? fromHash
-    : 'home';
+  const h = location.hash.slice(1);
+  return PAGES.includes(h) || REDIRECTS[h] ? h : 'home';
 }
 document.addEventListener('DOMContentLoaded', () => showPage(initialPageId()));
 window.addEventListener('hashchange', () => {
   const id = location.hash.slice(1);
-  if (id && document.querySelector(`.nav-item[data-page="${id}"]`)) showPage(id);
+  if (PAGES.includes(id) || REDIRECTS[id]) showPage(id);
 });

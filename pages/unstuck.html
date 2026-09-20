@@ -2,22 +2,29 @@
   <div class="page-title">Unstuck Protocol</div>
   <div class="page-subtitle">Diagnose first. Wrong diagnosis = wrong fix.</div>
 
+  <div class="pnc">
+    <div class="pnc-step"><div class="pnc-num">Pause</div><div class="pnc-text">Stop. One breath. Break the cycle.</div></div>
+    <div class="pnc-step"><div class="pnc-num">Notice</div><div class="pnc-text">Where is my attention? Name the feeling: "I feel X", not "I am X".</div></div>
+    <div class="pnc-step"><div class="pnc-num">Choose</div><div class="pnc-text">One action under 60 seconds. Shrink it until it feels easy.</div></div>
+  </div>
+  <div class="pnc-rule">Stuck is an emotional signal, not a willpower failure. Emotion first, task second.</div>
+
   <p style="margin-bottom:20px;"><strong>What's actually happening right now?</strong> Pick one.</p>
 
   <div class="unstuck-grid">
-    <div class="unstuck-btn" onclick="selectProtocol('start')">
+    <div class="unstuck-btn" data-proto="start" onclick="selectProtocol('start', this)">
       <div class="btn-letter">A</div>
       <div class="btn-label">I can't start</div>
     </div>
-    <div class="unstuck-btn" onclick="selectProtocol('drift')">
+    <div class="unstuck-btn" data-proto="drift" onclick="selectProtocol('drift', this)">
       <div class="btn-letter">B</div>
       <div class="btn-label">I started but I'm drifting</div>
     </div>
-    <div class="unstuck-btn" onclick="selectProtocol('displaced')">
+    <div class="unstuck-btn" data-proto="displaced" onclick="selectProtocol('displaced', this)">
       <div class="btn-letter">C</div>
       <div class="btn-label">Productive on the wrong thing</div>
     </div>
-    <div class="unstuck-btn" onclick="selectProtocol('finish')">
+    <div class="unstuck-btn" data-proto="finish" onclick="selectProtocol('finish', this)">
       <div class="btn-letter">D</div>
       <div class="btn-label">At the finish line, can't close it</div>
     </div>
@@ -29,10 +36,49 @@
       <div class="btn-letter">F</div>
       <div class="btn-label">In a shame spiral</div>
     </div>
-    <div class="unstuck-btn" onclick="selectProtocol('overload')">
+    <div class="unstuck-btn" data-proto="overload" onclick="selectProtocol('overload', this)">
       <div class="btn-letter">G</div>
       <div class="btn-label">Too many things open, can't pick one</div>
     </div>
+    <div class="unstuck-btn" data-proto="lag" onclick="selectProtocol('lag', this)">
+      <div class="btn-letter">H</div>
+      <div class="btn-label">Clear but not moving</div>
+    </div>
+    <div class="unstuck-btn" data-proto="yes" onclick="selectProtocol('yes', this)">
+      <div class="btn-letter">I</div>
+      <div class="btn-label">About to say yes to something</div>
+    </div>
+  </div>
+
+  <!-- H — IDENTITY LAG -->
+  <div class="protocol-box" id="proto-lag">
+    <div class="proto-title">Identity Lag</div>
+    <div class="proto-why">The bottleneck isn't strategy. If it's reversible, it's not a decision. Reality responds to motion, not thinking.</div>
+    <h3>The Card — run this now</h3>
+    <ul class="step-list">
+      <li class="step-item"><span class="step-num">10s</span><span class="step-text"><strong>Name the direction in one sentence.</strong> What am I committing to?</span></li>
+      <li class="step-item"><span class="step-num">60s</span><span class="step-text"><strong>Make a micro-move</strong> that costs something, closes a door, and forces reality to respond.</span></li>
+      <li class="step-item"><span class="step-num">now</span><span class="step-text"><strong>Execute before explanation.</strong> If you keep thinking, the move is too reversible.</span></li>
+    </ul>
+    <h3>Litmus tests</h3>
+    <div class="filter-item"><span class="filter-num">&rarr;</span><div class="filter-text">Can I undo this cleanly? &rarr; <strong>Not far enough</strong></div></div>
+    <div class="filter-item"><span class="filter-num">&rarr;</span><div class="filter-text">Am I still thinking about it? &rarr; <strong>Exit still open</strong></div></div>
+    <div class="filter-item" style="border:none;"><span class="filter-num">&rarr;</span><div class="filter-text">Did reality update? &rarr; <strong>Decision complete</strong></div></div>
+    <div class="proto-more" onclick="showPage('irreversible')">Full protocol: Make It Irreversible &rarr;</div>
+  </div>
+
+  <!-- I — OPPORTUNITY -->
+  <div class="protocol-box" id="proto-yes">
+    <div class="proto-title">Before You Say Yes</div>
+    <div class="proto-why">For offers, partnerships, new commitments. Any "no" &rarr; stop.</div>
+    <div class="filter-item"><span class="filter-num">1</span><div class="filter-text"><strong>Clarity:</strong> Is this an obvious yes? If not, it's a no.</div></div>
+    <div class="filter-item"><span class="filter-num">2</span><div class="filter-text"><strong>Downside:</strong> Can I survive the worst case?</div></div>
+    <div class="filter-item"><span class="filter-num">3</span><div class="filter-text"><strong>Upside:</strong> Asymmetric upside — or vanity/maintenance?</div></div>
+    <div class="filter-item"><span class="filter-num">4</span><div class="filter-text"><strong>Freedom:</strong> More control over time later — or locked into obligations?</div></div>
+    <div class="filter-item"><span class="filter-num">5</span><div class="filter-text"><strong>Peace of mind:</strong> Will future-me feel lighter or heavier?</div></div>
+    <div class="filter-item" style="border:none;"><span class="filter-num">6</span><div class="filter-text"><strong>Authenticity:</strong> Is this for me — or to impress someone?</div></div>
+    <div class="proto-rule">Does this increase freedom and autonomy over time, or build a better cage? Cage: reject, regardless of money. Freedom: pursue, even if unclear.</div>
+    <div class="proto-more" onclick="showPage('filters')">Full protocol: Decision Filters &rarr;</div>
   </div>
 
   <!-- START FAILURE -->
@@ -155,4 +201,13 @@
       <div style="font-size:13px;color:var(--gray-700);line-height:1.6;"><strong style="color:var(--black);">Fix:</strong> Create a smaller version where success is almost guaranteed. Stack wins until the belief shifts. Momentum changes evidence.</div>
     </div>
   </div>
+
+  <div class="lost-block">
+    <div class="lost-title">When lost, return here</div>
+    <div class="lost-q">Does this expand my life or shrink it?</div>
+    <div class="lost-q">Am I acting from faith or from fear?</div>
+    <div class="lost-q">Which path makes commitment inevitable?</div>
+    <div class="lost-rule">Failure is impossible. Magic is expected. Positive outcomes are inevitable.</div>
+  </div>
+
 </div>

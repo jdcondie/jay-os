@@ -128,3 +128,14 @@ h3 {
 p { color: var(--gray-700); margin-bottom: 12px; }
 strong { color: var(--black); font-weight: 600; }
 em { color: var(--orange); font-style: normal; font-weight: 600; }
+
+/* ── SIDEBAR REFERENCE FOLD ─────────────────────────────────────── */
+.nav-fold { margin-bottom: 16px; }
+.nav-fold summary {
+  cursor: pointer; list-style: none;
+  display: flex; align-items: center; gap: 5px;
+}
+.nav-fold summary::-webkit-details-marker { display: none; }
+.nav-fold summary::after { content: '+'; color: var(--orange); font-weight: 800; }
+.nav-fold[open] summary::after { content: '–'; }
+.nav-fold summary:hover { color: var(--orange); }
