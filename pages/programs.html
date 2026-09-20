@@ -1,0 +1,54 @@
+<div class="page" id="page-programs" style="padding:52px 56px 88px;">
+  <div class="page-title">Programs</div>
+  <div class="page-subtitle">Multi-day work, and the sweeps that keep it honest. One target at a time.</div>
+
+  <div class="prog-tabs">
+    <button class="prog-tab active" id="prog-tab-trackers" onclick="progShowTab('trackers',this)">Trackers</button>
+    <button class="prog-tab" id="prog-tab-weekly" onclick="progShowTab('weekly',this)">Weekly</button>
+    <button class="prog-tab" id="prog-tab-annual" onclick="progShowTab('annual',this)">Annual</button>
+  </div>
+
+  <!-- TRACKERS -->
+  <div class="prog-pane visible" id="prog-pane-trackers">
+    <div id="prog-list"></div>
+    <div class="quote-block" style="margin-top:20px;">Run one target at a time. Starting a second one does not double the progress, it halves both.</div>
+  </div>
+
+  <!-- WEEKLY -->
+  <div class="prog-pane" id="prog-pane-weekly">
+    <p style="margin-bottom:18px;">7-day sweep. Kill drift. Reset priorities. Run top to bottom.</p>
+    <div class="card"><div id="weekly-body"></div></div>
+  </div>
+
+  <!-- ANNUAL -->
+  <div class="prog-pane" id="prog-pane-annual">
+    <p style="margin-bottom:18px;">No judgment. Just signal. The long view, once a year.</p>
+    <div class="card">
+      <div class="wk-sub" style="margin-top:0;">Life architecture — the conditions everything else rests on</div>
+      <div id="annual-nn"></div>
+      <div class="wk-sub">The year</div>
+      <div class="ws-field"><div class="ws-label">How has this period gone, really?</div>
+        <textarea class="ws-input" rows="3" data-persist="program.annual.howGone"></textarea></div>
+      <div class="ws-field"><div class="ws-label">What went well?</div>
+        <textarea class="ws-input" rows="3" data-persist="program.annual.wentWell"></textarea></div>
+      <div class="ws-field"><div class="ws-label">What went badly?</div>
+        <textarea class="ws-input" rows="3" data-persist="program.annual.wentBadly"></textarea></div>
+      <div class="ws-field"><div class="ws-label">Which habit or system created most of my success?</div>
+        <textarea class="ws-input" rows="2" data-persist="program.annual.bestSystem"></textarea></div>
+      <div class="ws-field"><div class="ws-label">Which habit or system created most of my stress or stagnation?</div>
+        <textarea class="ws-input" rows="2" data-persist="program.annual.worstSystem"></textarea></div>
+      <div class="ws-field"><div class="ws-label">Where did urgency crowd out importance?</div>
+        <textarea class="ws-input" rows="2" data-persist="program.annual.urgency"></textarea></div>
+      <div class="wk-sub">Deep clarity tests</div>
+      <div class="ws-field"><div class="ws-label">Movie screen: what would the audience be screaming at me to do?</div>
+        <textarea class="ws-input" rows="2" data-persist="program.annual.movie"></textarea></div>
+      <div class="ws-field"><div class="ws-label">85-year-old me: what would make them miserable?</div>
+        <textarea class="ws-input" rows="2" data-persist="program.annual.old1"></textarea></div>
+      <div class="ws-field"><div class="ws-label">85-year-old me: what would they wish I had done more of?</div>
+        <textarea class="ws-input" rows="2" data-persist="program.annual.old2"></textarea></div>
+      <div class="ws-field"><div class="ws-label">What does the next year require me to become?</div>
+        <textarea class="ws-input" rows="3" data-persist="program.annual.become"></textarea></div>
+      <div class="wk-gate">The full Annual Reflection worksheet, with the life scorecard, is still in the Library.</div>
+    </div>
+  </div>
+</div>

@@ -35,7 +35,7 @@
     <span class="btab-icon">🔧</span>
     <span class="btab-label">Fix</span>
   </button>
-  <button class="btab" id="btab-programs" onclick="btabNav('install')">
+  <button class="btab" id="btab-programs" onclick="btabNav('programs')">
     <span class="btab-icon">📅</span>
     <span class="btab-label">Programs</span>
   </button>
@@ -61,27 +61,11 @@
       <div class="nav-item" data-page="unstuck" onclick="showPage('unstuck')">
         <div class="nav-dot"></div> Fix
       </div>
+      <div class="nav-item" data-page="programs" onclick="showPage('programs')">
+        <div class="nav-dot"></div> Programs
+      </div>
       <div class="nav-item" data-page="library" onclick="showPage('library')">
         <div class="nav-dot"></div> Library
-      </div>
-    </div>
-
-    <div class="nav-section">
-      <div class="nav-label">Programs</div>
-      <div class="nav-item" data-page="install" onclick="showPage('install')">
-        <div class="nav-dot"></div> Identity Install (30d)
-      </div>
-      <div class="nav-item" data-page="rewiring" onclick="showPage('rewiring')">
-        <div class="nav-dot"></div> Behavior Rewiring (14d)
-      </div>
-      <div class="nav-item" data-page="7day" onclick="showPage('7day')">
-        <div class="nav-dot"></div> 7-Day Identity Cycle
-      </div>
-      <div class="nav-item" data-page="weekly" onclick="showPage('weekly')">
-        <div class="nav-dot"></div> Weekly Recalibration
-      </div>
-      <div class="nav-item" data-page="annual" onclick="showPage('annual')">
-        <div class="nav-dot"></div> Annual Reflection
       </div>
     </div>
 
@@ -104,6 +88,10 @@
       <div class="nav-item" data-page="manifestation" onclick="showPage('manifestation')"><div class="nav-dot"></div> Manifestation Process</div>
       <div class="nav-item" data-page="presence" onclick="showPage('presence')"><div class="nav-dot"></div> Presence &amp; Confidence</div>
       <div class="nav-item" data-page="prompts" onclick="showPage('prompts')"><div class="nav-dot"></div> Journal Prompts</div>
+      <div class="nav-item" data-page="install" onclick="showPage('install')"><div class="nav-dot"></div> Identity Install (30d)</div>
+      <div class="nav-item" data-page="rewiring" onclick="showPage('rewiring')"><div class="nav-dot"></div> Behavior Rewiring (14d)</div>
+      <div class="nav-item" data-page="7day" onclick="showPage('7day')"><div class="nav-dot"></div> 7-Day Identity Cycle</div>
+      <div class="nav-item" data-page="annual" onclick="showPage('annual')"><div class="nav-dot"></div> Annual Reflection (full)</div>
     </details>
 
     <div class="nav-section" style="margin-top:8px;border-top:1px solid var(--gray-300);padding-top:12px;">
@@ -131,5 +119,6 @@
 <script src="js/nonneg.js"></script>
 <script src="js/superpower.js"></script>
 <script src="js/install.js"></script>
+  <script src="js/programs.js"></script>
 </body>
 </html>

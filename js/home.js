@@ -111,6 +111,7 @@ function initHome() {
   renderClosed();
   renderAvoidFlag();
   renderProgram();
+  renderTighten();
 }
 
 // ── STREAK + DOTS ─────────────────────────────────────────────────
@@ -380,15 +381,26 @@ function renderAvoidFlag() {
   if (same) el.textContent = 'Same avoidance three days running. That is the signal, not the task.';
 }
 
+// ── THIS WEEK'S TIGHTENED RULE ────────────────────────────────────
+function renderTighten() {
+  const el = document.getElementById('home-tighten');
+  if (!el) return;
+  const d = new Date(); d.setDate(d.getDate() - 7);
+  const prev = OS.weeks[isoWeek(fmtDate(d))] || {};
+  const t = (prev.tighten || '').trim();
+  el.style.display = t ? 'block' : 'none';
+  if (t) el.innerHTML = '<strong>Tightening this week.</strong> ' + esc(t);
+}
+
 // ── ACTIVE PROGRAM ────────────────────────────────────────────────
 function renderProgram() {
   const el = document.getElementById('home-program');
   if (!el) return;
-  const inst = OS.programs.install;
-  if (!inst || !inst.startDate) { el.style.display = 'none'; return; }
-  const day = Math.max(1, Math.min(30, Math.floor(
-    (new Date(getToday() + 'T00:00:00') - new Date(inst.startDate + 'T00:00:00')) / 86400000) + 1));
+  const id = OS.programs.active;
+  const def = typeof PROGRAMS !== 'undefined' ? PROGRAMS.find(p => p.id === id) : null;
+  const day = def ? progDay(def.id, def.days) : null;
+  if (!def || !day) { el.style.display = 'none'; return; }
   el.style.display = 'inline-flex';
-  el.textContent = 'Identity Install · Day ' + day + ' of 30';
-  el.onclick = () => showPage('install');
+  el.textContent = def.name + ' · Day ' + day + ' of ' + def.days;
+  el.onclick = () => showPage(def.page);
 }

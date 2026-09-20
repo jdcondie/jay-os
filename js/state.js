@@ -43,6 +43,7 @@ function loadOS() {
   s.programs = s.programs || {};
   s.meta     = s.meta     || {};
   if (!s.meta.migrated) migrateLegacy(s);
+  migrateWeeklyKeys(s);
   return s;
 }
 
@@ -166,6 +167,23 @@ function migrateLegacy(s) {
   s.meta.migrated = true;
   s.meta.lastOpen = getToday();
   try { localStorage.setItem(OS_KEY, JSON.stringify(s)); } catch (e) {}
+}
+
+// The Weekly page's fields were auto-named before they had a home.
+// Carry them onto the names the weekly review reads.
+function migrateWeeklyKeys(s) {
+  if (s.meta.wk2) return;
+  const WK_RENAMES = {
+    f1NorthStar: 'northStar', f2Top1: 'outcomes', f3CostAudit: 'cost',
+    f4SubtractionList: 'subtraction', f5AvoidanceAudit: 'avoidance',
+    f6SystemMove: 'system', f7NeverMiss: 'missTwice',
+  };
+  Object.values(s.weeks || {}).forEach(w => {
+    Object.keys(WK_RENAMES).forEach(old => {
+      if (w[old] != null && w[WK_RENAMES[old]] == null) w[WK_RENAMES[old]] = w[old];
+    });
+  });
+  s.meta.wk2 = true;
 }
 
 // ── EXPORT / IMPORT ───────────────────────────────────────────────

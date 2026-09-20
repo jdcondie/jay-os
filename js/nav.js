@@ -2,7 +2,7 @@
 const pageCache = {};
 let currentPageId = 'home';
 
-const REDIRECTS = { 'daily-sheet': 'home' };
+const REDIRECTS = { 'daily-sheet': 'home', 'weekly': 'programs' };
 
 async function showPage(id) {
   if (REDIRECTS[id]) id = REDIRECTS[id];
@@ -53,6 +53,8 @@ async function showPage(id) {
   if (id === 'scenes') initScenes();
   if (id === 'manifestos') initManifestos();
   if (id === 'install') initInstall();
+  if (id === 'programs') initPrograms();
+  if (id === 'annual')  renderAnnualNN();
 }
 
 // ── MOBILE MENU ───────────────────────────────────────────────────
@@ -68,7 +70,7 @@ function closeMenu() {
 }
 
 // ── BOTTOM TAB BAR ────────────────────────────────────────────────
-const PAGES = ['home','unstuck','library','install','rewiring','7day','weekly','annual',
+const PAGES = ['home','unstuck','programs','library','install','rewiring','7day','weekly','annual',
   'machine','identity','superpower','traits','rules','nonneg','fuel','spiral','filters',
   'irreversible','rhythm','deepwork','scenes','manifestos','manifestation','presence','prompts'];
 
@@ -76,8 +78,8 @@ const BTAB_MAP = {
   home: 'btab-home',
   unstuck: 'btab-fix', fuel: 'btab-fix', spiral: 'btab-fix',
   filters: 'btab-fix', irreversible: 'btab-fix',
-  install: 'btab-programs', rewiring: 'btab-programs', '7day': 'btab-programs',
-  weekly: 'btab-programs', annual: 'btab-programs',
+  programs: 'btab-programs', install: 'btab-programs',
+  rewiring: 'btab-programs', '7day': 'btab-programs', annual: 'btab-programs',
 };
 function updateBtab(pageId) {
   document.querySelectorAll('.btab').forEach(b => b.classList.remove('active'));
