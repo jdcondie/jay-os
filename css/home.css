@@ -254,3 +254,32 @@
   background: var(--gray-50); border-left: 3px solid var(--orange);
   border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 22px;
 }
+
+/* ── COLLAPSIBLE BEATS ──────────────────────────────────────────── */
+.beat-head { cursor: pointer; margin-bottom: 0; user-select: none; }
+.beat.open .beat-head { margin-bottom: 18px; }
+.beat:not(.open) .beat-body { display: none; }
+.beat:not(.open) { padding-top: 16px; padding-bottom: 16px; }
+.beat-title { color: var(--gray-700); font-weight: 700; }
+.beat-status {
+  flex: 1; text-align: right; font-size: 12px; font-weight: 600;
+  color: var(--gray-500); white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; min-width: 0; padding-left: 10px;
+}
+.beat.open .beat-status { display: none; }
+.beat-caret {
+  width: 8px; height: 8px; flex-shrink: 0;
+  border-right: 2px solid var(--gray-300); border-bottom: 2px solid var(--gray-300);
+  transform: rotate(45deg); margin: 0 4px 3px 6px; transition: transform 0.15s;
+}
+.beat.open .beat-caret { transform: rotate(-135deg); margin-bottom: -3px; }
+
+/* ── DAY TYPE: FILTERS ON TAP ───────────────────────────────────── */
+.dt-more { font-size: 11px; font-weight: 700; color: var(--orange); cursor: pointer; margin: 10px 0 0; }
+.dt-more-close, #home-daytype-detail.show-filters .dt-more-open { display: none; }
+#home-daytype-detail.show-filters .dt-more-close { display: inline; }
+#home-daytype-detail .dt-filters, #home-daytype-detail .dt-rule { display: none; }
+#home-daytype-detail.show-filters .dt-filters { display: grid; margin-top: 12px; }
+#home-daytype-detail.show-filters .dt-rule { display: block; }
+#home-daytype-detail .dt-override { margin-top: 2px; }
+#home-daytype-detail .dt-q { margin-bottom: 6px; }

@@ -139,3 +139,7 @@ em { color: var(--orange); font-style: normal; font-weight: 600; }
 .nav-fold summary::after { content: '+'; color: var(--orange); font-weight: 800; }
 .nav-fold[open] summary::after { content: '–'; }
 .nav-fold summary:hover { color: var(--orange); }
+
+/* ── INSTALL HINT ───────────────────────────────────────────────── */
+.nav-install { font-size: 10px; color: var(--gray-500); line-height: 1.5; padding: 8px 12px 0; }
+@media (display-mode: standalone) { .nav-install { display: none; } }

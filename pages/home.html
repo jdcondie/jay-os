@@ -18,107 +18,122 @@
   <div class="tighten-line" id="home-tighten" style="display:none;"></div>
 
   <!-- ── AM ─────────────────────────────────────────────────────── -->
-  <div class="beat">
-    <div class="beat-head"><span class="beat-num">AM</span> 90 seconds</div>
-
-    <div class="beat-label">What kind of day is this?</div>
-    <div class="home-day-grid" id="home-day-grid">
-      <button class="home-day-btn" data-type="Sales"        onclick="setDayType('Sales')"><div class="home-day-label">Sales</div></button>
-      <button class="home-day-btn" data-type="Creation"     onclick="setDayType('Creation')"><div class="home-day-label">Creation</div></button>
-      <button class="home-day-btn" data-type="Strategy"     onclick="setDayType('Strategy')"><div class="home-day-label">Strategy</div></button>
-      <button class="home-day-btn" data-type="Ops"          onclick="setDayType('Ops')"><div class="home-day-label">Ops</div></button>
-      <button class="home-day-btn" data-type="Recovery"     onclick="setDayType('Recovery')"><div class="home-day-label">Recovery</div></button>
-      <button class="home-day-btn" data-type="Relationship" onclick="setDayType('Relationship')"><div class="home-day-label">Relationship</div></button>
+  <div class="beat" data-beat="am">
+    <div class="beat-head" onclick="toggleBeat('am')">
+      <span class="beat-num">AM</span><span class="beat-title">90 seconds</span>
+      <span class="beat-status" id="beat-status-am"></span><span class="beat-caret"></span>
     </div>
-    <div id="home-daytype-detail" style="display:none;"></div>
-
-    <div class="beat-label" style="margin-top:22px;">The dominant move</div>
-    <input class="dominant-input" type="text" data-persist="day.intention"
-           placeholder="The single action that makes everything else easier...">
-    <div class="dominant-hint">If this is done, the day is a win. Schedule it first. Guard it.</div>
-
-    <div class="beat-label" style="margin-top:22px;">
-      Non-negotiables <span class="nn-count" id="home-nn-count"></span>
-    </div>
-    <div id="home-nn"></div>
-
-    <div class="avoid-flag" id="home-avoid-flag" style="display:none;"></div>
-
-    <details class="fold">
-      <summary>Full orientation</summary>
-      <div class="fold-body">
-        <div class="ws-field"><div class="ws-label">Outcome: what must be true by tonight?</div>
-          <textarea class="ws-input" rows="2" data-persist="day.am.outcome"></textarea></div>
-        <div class="ws-field"><div class="ws-label">Constraint: what gets ignored without guilt?</div>
-          <textarea class="ws-input" rows="2" data-persist="day.am.constraint"></textarea></div>
-        <div class="ws-field"><div class="ws-label">Energy: what protects momentum?</div>
-          <textarea class="ws-input" rows="2" data-persist="day.am.energy"></textarea></div>
-        <div class="ws-field"><div class="ws-label">What am I avoiding today?</div>
-          <textarea class="ws-input" rows="2" data-persist="day.am.avoiding" placeholder="Name it specifically..."></textarea></div>
-        <div class="ws-field"><div class="ws-label">Gratitude — right now</div>
-          <textarea class="ws-input" rows="2" data-persist="day.am.gratNow"></textarea></div>
-        <div class="ws-field"><div class="ws-label">Gratitude — that will happen</div>
-          <textarea class="ws-input" rows="2" data-persist="day.am.gratFuture"></textarea></div>
-        <div class="ws-field"><div class="ws-label">One recent win</div>
-          <textarea class="ws-input" rows="2" data-persist="day.am.win"></textarea></div>
-        <div class="ws-field"><div class="ws-label">What am I excited about today?</div>
-          <textarea class="ws-input" rows="2" data-persist="day.am.excited"></textarea></div>
+    <div class="beat-body">
+      <div class="beat-label">What kind of day is this?</div>
+      <div class="home-day-grid" id="home-day-grid">
+        <button class="home-day-btn" data-type="Sales"        onclick="setDayType('Sales')"><div class="home-day-label">Sales</div></button>
+        <button class="home-day-btn" data-type="Creation"     onclick="setDayType('Creation')"><div class="home-day-label">Creation</div></button>
+        <button class="home-day-btn" data-type="Strategy"     onclick="setDayType('Strategy')"><div class="home-day-label">Strategy</div></button>
+        <button class="home-day-btn" data-type="Ops"          onclick="setDayType('Ops')"><div class="home-day-label">Ops</div></button>
+        <button class="home-day-btn" data-type="Recovery"     onclick="setDayType('Recovery')"><div class="home-day-label">Recovery</div></button>
+        <button class="home-day-btn" data-type="Relationship" onclick="setDayType('Relationship')"><div class="home-day-label">Relationship</div></button>
       </div>
-    </details>
+      <div id="home-daytype-detail" style="display:none;"></div>
+
+      <div class="beat-label" style="margin-top:22px;">The dominant move</div>
+      <input class="dominant-input" type="text" data-persist="day.intention"
+             placeholder="The single action that makes everything else easier...">
+      <div class="dominant-hint" id="dominant-hint">If this is done, the day is a win. Schedule it first. Guard it.</div>
+
+      <div id="home-nn" style="margin-top:18px;"></div>
+      <div class="avoid-flag" id="home-avoid-flag" style="display:none;"></div>
+
+      <details class="fold">
+        <summary>Full orientation</summary>
+        <div class="fold-body">
+          <div class="beat-label">The other four <span class="nn-count" id="home-nn-count"></span></div>
+          <div id="home-nn-more" style="margin-bottom:18px;"></div>
+          <div class="ws-field"><div class="ws-label">Outcome: what must be true by tonight?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.am.outcome"></textarea></div>
+          <div class="ws-field"><div class="ws-label">Constraint: what gets ignored without guilt?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.am.constraint"></textarea></div>
+          <div class="ws-field"><div class="ws-label">Energy: what protects momentum?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.am.energy"></textarea></div>
+          <div class="ws-field"><div class="ws-label">What am I avoiding today?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.am.avoiding" placeholder="Name it specifically..."></textarea></div>
+          <div class="ws-field"><div class="ws-label">Gratitude — right now</div>
+            <textarea class="ws-input" rows="2" data-persist="day.am.gratNow"></textarea></div>
+          <div class="ws-field"><div class="ws-label">Gratitude — that will happen</div>
+            <textarea class="ws-input" rows="2" data-persist="day.am.gratFuture"></textarea></div>
+          <div class="ws-field"><div class="ws-label">One recent win</div>
+            <textarea class="ws-input" rows="2" data-persist="day.am.win"></textarea></div>
+          <div class="ws-field"><div class="ws-label">What am I excited about today?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.am.excited"></textarea></div>
+        </div>
+      </details>
+    </div>
   </div>
 
   <!-- ── BLOCK ──────────────────────────────────────────────────── -->
-  <div class="beat">
-    <div class="beat-head"><span class="beat-num">BLOCK</span> One focus block is enough</div>
-    <div id="home-block"></div>
+  <div class="beat" data-beat="block">
+    <div class="beat-head" onclick="toggleBeat('block')">
+      <span class="beat-num">BLOCK</span><span class="beat-title">One focus block is enough</span>
+      <span class="beat-status" id="beat-status-block"></span><span class="beat-caret"></span>
+    </div>
+    <div class="beat-body"><div id="home-block"></div></div>
   </div>
 
   <!-- ── MID-DAY ────────────────────────────────────────────────── -->
-  <div class="beat">
-    <div class="beat-head"><span class="beat-num">MID-DAY</span> Pull one card, not all</div>
-    <div id="home-card"></div>
-    <details class="fold">
-      <summary>Failsafe — when stuck</summary>
-      <div class="fold-body">
-        <div class="failsafe">What am I avoiding?</div>
-        <div class="failsafe">What's the smallest irreversible step?</div>
-        <div class="failsafe">If I act now, does clarity increase?</div>
-        <div class="failsafe-rule">Motion creates clarity.</div>
-      </div>
-    </details>
+  <div class="beat" data-beat="mid">
+    <div class="beat-head" onclick="toggleBeat('mid')">
+      <span class="beat-num">MID-DAY</span><span class="beat-title">Pull one card</span>
+      <span class="beat-status" id="beat-status-mid"></span><span class="beat-caret"></span>
+    </div>
+    <div class="beat-body">
+      <div id="home-card"></div>
+      <details class="fold">
+        <summary>Failsafe — when stuck</summary>
+        <div class="fold-body">
+          <div class="failsafe">What am I avoiding?</div>
+          <div class="failsafe">What's the smallest irreversible step?</div>
+          <div class="failsafe">If I act now, does clarity increase?</div>
+          <div class="failsafe-rule">Motion creates clarity.</div>
+        </div>
+      </details>
+    </div>
   </div>
 
   <!-- ── PM ─────────────────────────────────────────────────────── -->
-  <div class="beat">
-    <div class="beat-head"><span class="beat-num">PM</span> 2 minutes</div>
-
-    <div class="beat-label">Did I do the dominant move?</div>
-    <div class="close-row">
-      <button class="close-btn yes" id="close-yes" onclick="setClosed('yes')">Yes</button>
-      <button class="close-btn no"  id="close-no"  onclick="setClosed('no')">No</button>
+  <div class="beat" data-beat="pm">
+    <div class="beat-head" onclick="toggleBeat('pm')">
+      <span class="beat-num">PM</span><span class="beat-title">One question</span>
+      <span class="beat-status" id="beat-status-pm"></span><span class="beat-caret"></span>
     </div>
-    <div class="close-note" id="close-note"></div>
-
-    <div class="ws-field" style="margin-top:18px;"><div class="ws-label">What gave energy?</div>
-      <textarea class="ws-input" rows="2" data-persist="day.pm.energized"></textarea></div>
-    <div class="ws-field"><div class="ws-label">What drained energy?</div>
-      <textarea class="ws-input" rows="2" data-persist="day.pm.drained"></textarea></div>
-    <div class="ws-field"><div class="ws-label">One tweak tomorrow</div>
-      <textarea class="ws-input" rows="2" data-persist="day.pm.tweak"></textarea></div>
-    <div class="ws-field"><div class="ws-label">Tomorrow's one must-win</div>
-      <textarea class="ws-input" rows="2" data-persist="day.pm.tomorrow"></textarea></div>
-
-    <details class="fold">
-      <summary>Full close</summary>
-      <div class="fold-body">
-        <div class="ws-field"><div class="ws-label">What progress did I make?</div>
-          <textarea class="ws-input" rows="2" data-persist="day.pm.progress"></textarea></div>
-        <div class="ws-field"><div class="ws-label">Let go — what can I release?</div>
-          <textarea class="ws-input" rows="2" data-persist="day.pm.letGo"></textarea></div>
-        <div class="ws-field"><div class="ws-label">What evidenced my identity today?</div>
-          <textarea class="ws-input" rows="2" data-persist="day.pm.evidence"></textarea></div>
+    <div class="beat-body">
+      <div class="beat-label">Did I do the dominant move?</div>
+      <div class="close-row">
+        <button class="close-btn yes" id="close-yes" onclick="setClosed('yes')">Yes</button>
+        <button class="close-btn no"  id="close-no"  onclick="setClosed('no')">No</button>
       </div>
-    </details>
+      <div class="close-note" id="close-note"></div>
+
+      <div class="beat-label" style="margin-top:18px;">Tomorrow's one must-win</div>
+      <input class="dominant-input" type="text" data-persist="day.pm.tomorrow"
+             placeholder="Shows up as tomorrow's dominant move...">
+
+      <details class="fold">
+        <summary>Full close</summary>
+        <div class="fold-body">
+          <div class="ws-field"><div class="ws-label">What gave energy?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.pm.energized"></textarea></div>
+          <div class="ws-field"><div class="ws-label">What drained energy?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.pm.drained"></textarea></div>
+          <div class="ws-field"><div class="ws-label">One tweak tomorrow</div>
+            <textarea class="ws-input" rows="2" data-persist="day.pm.tweak"></textarea></div>
+          <div class="ws-field"><div class="ws-label">What progress did I make?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.pm.progress"></textarea></div>
+          <div class="ws-field"><div class="ws-label">Let go — what can I release?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.pm.letGo"></textarea></div>
+          <div class="ws-field"><div class="ws-label">What evidenced my identity today?</div>
+            <textarea class="ws-input" rows="2" data-persist="day.pm.evidence"></textarea></div>
+        </div>
+      </details>
+    </div>
   </div>
 
   <div class="today-foot">

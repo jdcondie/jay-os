@@ -102,6 +102,7 @@ function initHome() {
   if (el) el.textContent = new Date().toLocaleDateString('en-US',
     { weekday: 'long', month: 'long', day: 'numeric' }).toUpperCase();
 
+  carryForward();
   renderStreak();
   renderDots();
   renderDayType();
@@ -112,6 +113,60 @@ function initHome() {
   renderAvoidFlag();
   renderProgram();
   renderTighten();
+  applyBeatDefault();
+  renderBeatStatus();
+}
+
+// ── CARRY FORWARD ─────────────────────────────────────────────────
+// Last night's "tomorrow's one must-win" becomes this morning's
+// dominant move. The most useful link in the loop.
+function carryForward() {
+  const d = today();
+  if (d.intention || d.carried) return;
+  const y = OS.days[dayKeyOffset(1)] || {};
+  const t = (y.pm && y.pm.tomorrow || '').trim();
+  if (!t) return;
+  d.intention = t;
+  d.carried = true;
+  saveOS();
+  const input = document.querySelector('[data-persist="day.intention"]');
+  if (input) input.value = t;
+  const hint = document.getElementById('dominant-hint');
+  if (hint) hint.textContent = 'Carried from last night. Change it if the day changed.';
+}
+
+// ── BEATS ─────────────────────────────────────────────────────────
+// Open the beat that matches the clock. A running block wins.
+function defaultBeat() {
+  const b = today().block;
+  if (b && !b.ended) return 'block';
+  const h = new Date().getHours();
+  if (h < 12) return 'am';
+  if (h < 17) return 'block';
+  return 'pm';
+}
+function applyBeatDefault() {
+  const open = defaultBeat();
+  document.querySelectorAll('.beat[data-beat]').forEach(el =>
+    el.classList.toggle('open', el.dataset.beat === open));
+}
+function toggleBeat(id) {
+  const el = document.querySelector('.beat[data-beat="' + id + '"]');
+  if (el) el.classList.toggle('open');
+}
+function renderBeatStatus() {
+  const d = today();
+  const set = (id, txt) => {
+    const el = document.getElementById('beat-status-' + id);
+    if (el) el.textContent = txt;
+  };
+  set('am', d.intention ? d.intention : (d.dayType ? d.dayType + ' day' : ''));
+  const sessions = d.sessions || [];
+  const mins = sessions.reduce((n, x) => n + (x.minutes || 0), 0);
+  set('block', d.block && !d.block.ended ? 'Running'
+             : sessions.length ? sessions.length + (sessions.length === 1 ? ' block · ' : ' blocks · ') + mins + ' min' : '');
+  set('mid', d.card != null && CARDS[d.card] ? CARDS[d.card].name : '');
+  set('pm', d.closed === 'yes' ? 'Done' : d.closed === 'no' ? 'Missed, noted' : '');
 }
 
 // ── STREAK + DOTS ─────────────────────────────────────────────────
@@ -161,33 +216,39 @@ function renderDayType() {
   box.style.display = 'block';
   box.innerHTML =
     '<div class="dt-q">' + t.q + '</div>' +
+    '<div class="dt-override">' + t.override + '</div>' +
+    '<div class="dt-more" onclick="this.parentNode.classList.toggle(\'show-filters\')">' +
+      '<span class="dt-more-open">Show the four filters</span><span class="dt-more-close">Hide filters</span></div>' +
     '<div class="dt-filters">' + t.filters.map(f =>
       '<div class="dt-filter"><div class="dt-filter-name">' + f[0] + '</div>' +
       '<div class="dt-filter-q">' + f[1] + '</div></div>').join('') + '</div>' +
-    '<div class="dt-rule"><strong>Rule.</strong> ' + t.rule + '</div>' +
-    '<div class="dt-override">' + t.override + '</div>';
+    '<div class="dt-rule"><strong>Rule.</strong> ' + t.rule + '</div>';
+  renderBeatStatus();
 }
 
 // ── NON-NEGOTIABLES (the daily five) ──────────────────────────────
+function nnRow(id, checked) {
+  const item = NN_DATA.find(d => d.id === id);
+  if (!item) return null;
+  const on = !!checked[id];
+  const row = document.createElement('div');
+  row.className = 'nn-row' + (on ? ' on' : '');
+  row.onclick = () => { nnToggle(id); renderNN(); renderStreak(); renderDots(); };
+  row.innerHTML = '<div class="nn-box">' + (on ? '✓' : '') + '</div>' +
+                  '<div class="nn-text">' + item.text + '</div>';
+  return row;
+}
+
 function renderNN() {
-  const wrap = document.getElementById('home-nn');
-  if (!wrap || typeof NN_DATA === 'undefined') return;
+  if (typeof NN_DATA === 'undefined') return;
   const checked = today().nn || {};
-  wrap.innerHTML = '';
-  NN_DAILY.forEach(id => {
-    const item = NN_DATA.find(d => d.id === id);
-    if (!item) return;
-    const on = !!checked[id];
-    const row = document.createElement('div');
-    row.className = 'nn-row' + (on ? ' on' : '');
-    row.onclick = () => { nnToggle(id); renderNN(); renderStreak(); renderDots(); };
-    row.innerHTML = '<div class="nn-box">' + (on ? '✓' : '') + '</div>' +
-                    '<div class="nn-text">' + item.text + '</div>';
-    wrap.appendChild(row);
-  });
-  const done = NN_DAILY.filter(id => checked[id]).length;
+  const top  = document.getElementById('home-nn');
+  const more = document.getElementById('home-nn-more');
+  if (top)  { top.innerHTML = '';  const r = nnRow(NN_DAILY[0], checked); if (r) top.appendChild(r); }
+  if (more) { more.innerHTML = ''; NN_DAILY.slice(1).forEach(id => { const r = nnRow(id, checked); if (r) more.appendChild(r); }); }
+  const done = NN_DAILY.slice(1).filter(id => checked[id]).length;
   const lab  = document.getElementById('home-nn-count');
-  if (lab) lab.textContent = done + ' / ' + NN_DAILY.length;
+  if (lab) lab.textContent = done + ' / ' + (NN_DAILY.length - 1);
 }
 
 // ── FOCUS BLOCK ───────────────────────────────────────────────────
@@ -206,6 +267,7 @@ function startBlock() {
   today().block = { goal: goal, minutes: blockMinutes, startedAt: Date.now() };
   saveOS();
   renderBlock();
+  renderBeatStatus();
 }
 
 function endBlock() {
@@ -236,6 +298,7 @@ function saveBlock() {
   delete d.block;
   saveOS();
   renderBlock();
+  renderBeatStatus();
 }
 
 function setBlockEnergy(v) {
@@ -326,6 +389,7 @@ function pullCard() {
   today().card = Math.floor(Math.random() * CARDS.length);
   saveOS();
   renderCard();
+  renderBeatStatus();
 }
 
 function renderCard() {
@@ -352,6 +416,7 @@ function setClosed(v) {
   renderClosed();
   renderStreak();
   renderDots();
+  renderBeatStatus();
 }
 
 function renderClosed() {
